@@ -1,0 +1,21 @@
+{
+  "name": "ruby-game",
+  "version": "1.0.0",
+  "description": "Mais où est passée Ruby ?",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css ",
+    "prefix": "postcss ./public/css/style.css --use autoprefixer -d ./public/css/prefixed/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jogit64/ruby"
+  },
+  "author": "jogit64",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "bugs": {
+    "url": "https://github.com/jogit64/ruby"
+  },
+  "homepage": "https://github.com/jogit64/ruby/blob/main/readme.md"
+}

@@ -1,0 +1,117 @@
+// todo Affichage de la partie score
+.z-tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 40rem;
+  border: 1px solid;
+  margin: auto;
+  //padding: 1rem;
+
+  &__entete {
+    width: 100%;
+    background-color: $colour-primary;
+
+    font-size: 1.4rem;
+    text-align: center;
+    color: $colour-accent;
+
+    border: 1px solid $colour-accent;
+    //padding: 3rem;
+  }
+
+  &__cel {
+    border: 1px solid $colour-accent;
+    border-top: 0;
+    width: 100%;
+    text-align: center;
+    //padding: 1rem;
+    color: $colour-accent;
+
+    //background-color: yellow;
+  }
+}
+
+// todo Affichage de la partie cptTour 10
+.z-cptTour {
+  display: flex;
+  justify-content: center;
+  width: 40rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  color: $colour-accent;
+  //background: blueviolet;
+  //border: 1px solid $colour-accent;
+  //border-bottom: 0;
+  font-size: 1.4rem;
+
+  &__titre {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  &__num {
+  }
+}
+
+// todo Affichage du conteneur grid de z-jeuGrid
+.jeu-grid {
+  width: 50%;
+  display: flex;
+  justify-content: baseline;
+  margin: auto;
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+// todo Affichage des cases et des images maison et toutous
+.jeu-grid__case {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 200px;
+
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+
+  border: 3px solid $colour-accent;
+  background-color: #685bbd;
+  border-radius: 25%;
+
+  &--changed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+
+    border: 3px solid $colour-secondary;
+    border-radius: 25%;
+    background-color: $colour-secondary;
+  }
+}
+
+// todo affichage des images maison et toutous
+.featImg {
+  max-width: 100%;
+}
+
+.go {
+  background-color: white;
+}
+
+// * affichage du message gagnant
+.flash-ruby {
+  font-size: 15rem;
+  text-align: center;
+  @include heading-shadow($colour-accent);
+}
+
+#z-flash {
+  //height: 100%;
+}

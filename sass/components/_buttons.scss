@@ -1,0 +1,21 @@
+.commencer {
+  text-align: center;
+  font-variant-caps: small-caps;
+
+  width: 200px;
+
+  background-color: $colour-primary;
+  color: $colour-accent;
+
+  border: 1px solid $colour-primary;
+  border-radius: 20%;
+
+  margin: auto;
+  margin-top: 2rem;
+  padding: 1rem;
+
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+}

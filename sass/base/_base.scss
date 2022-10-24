@@ -1,0 +1,25 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html,
+body {
+  // 10px div by def of 16px
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: $colour-secondary;
+}
+
+.contain {
+  height: 100%;
+}

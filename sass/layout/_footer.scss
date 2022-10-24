@@ -1,0 +1,11 @@
+footer {
+  background: $colour-primary;
+  color: $colour-accent;
+
+  font-family: SweetSansProExLight;
+  font-size: 1.3rem;
+
+  margin-top: 9rem;
+  min-height: 6rem;
+  @include flex-place($center);
+}

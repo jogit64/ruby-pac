@@ -1,0 +1,20 @@
+.header {
+  @include flex-place($center);
+  background: $colour-primary;
+  margin-bottom: 5rem;
+
+  &__baseline {
+    @include heading-shadow;
+    font-size: 3.2rem;
+    color: $colour-accent;
+    margin: 2rem;
+  }
+
+  &__img {
+    @include flex-place($start);
+  }
+
+  &__img--feat {
+    margin-top: 6rem;
+  }
+}
