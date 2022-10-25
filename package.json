@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jogit64/ruby"
+    "url": "git+https://github.com/jogit64/ruby-pac"
   },
   "author": "jogit64",
   "license": "ISC",
   "browserslist": "last 4 versions",
   "bugs": {
-    "url": "https://github.com/jogit64/ruby"
+    "url": "https://github.com/jogit64/ruby-pac"
   },
   "homepage": "https://github.com/jogit64/ruby/blob/main/readme.md"
 }
