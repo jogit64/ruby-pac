@@ -5,6 +5,7 @@
 
   &__baseline {
     @include heading-shadow;
+    font-family: Pacfont;
     font-size: 3.2rem;
     color: $colour-accent;
     margin: 2rem;

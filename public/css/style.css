@@ -31,6 +31,10 @@ body {
   font-family: "SweetSansProExLight";
   src: url("/public/fonts/SweetSansProExLight.woff");
 }
+@font-face {
+  font-family: "Pacfont";
+  src: url("/public/fonts/PAC-FONT.TTF");
+}
 body {
   font-family: "SweetSansProRegular", "Roboto", sans-serif;
   color: rgb(69, 53, 93);
@@ -78,6 +82,7 @@ textarea {
 }
 .header__baseline {
   text-shadow: 0.55rem 0.55rem #2d223d;
+  font-family: Pacfont;
   font-size: 3.2rem;
   color: #fcfcfc;
   margin: 2rem;
