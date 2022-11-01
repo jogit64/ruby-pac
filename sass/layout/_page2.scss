@@ -1,0 +1,178 @@
+/*************************************************************
+ * CSS de page 2.*
+ *************************************************************/
+
+.gridCenter {
+  display: flex;
+  justify-content: center;
+}
+
+// todo Affichage du conteneur grid de z-jeuGrid
+.jeu-grid {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+
+  border-top: 5px double blue;
+  border-bottom: 5px double blue;
+}
+
+// todo SECTION gridCenter  : Affichage des cases et des images maison et toutous
+.jeu-grid__case {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 150px;
+
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+
+  &--changed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+  }
+}
+
+// todo SECTION score  : Affichage des cases et des images maison et toutous
+.score {
+  display: flex;
+  //max-width: 100%;
+  margin: auto;
+  background-color: aliceblue;
+
+  font-family: Merry;
+  font-size: 3rem;
+  color: $colour-secondary;
+
+  &__titre {
+    margin-right: 1rem;
+    background-color: aliceblue;
+    // todo mixin flex column center
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__num {
+    //font-family: Blomberg;
+    font-size: 3rem;
+    color: yellow;
+    margin-right: 6rem;
+  }
+
+  &__lives {
+    //margin-right: 1rem;
+
+    // todo mixin flex column center
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__lives--title {
+    margin-right: 1rem;
+    //background-color: rgb(0, 255, 110);
+  }
+
+  &__lives--ico {
+    max-width: 15px;
+    margin-right: 0.5rem;
+    display: flex;
+  }
+
+  &__ico {
+    // todo mixin
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 6rem;
+  }
+}
+
+// ! CLASSES APPELEES EN .JS -------------------------------------------------- //
+// todo class appelée en .js : affichage des images maison et toutous
+.featImg {
+  max-width: 100%;
+}
+
+//! ----------------A TRIER--------------------------------------------------
+// todo Affichage de la partie score
+.z-tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 40rem;
+  border: 1px solid;
+  margin: auto;
+  //padding: 1rem;
+
+  &__entete {
+    width: 100%;
+    background-color: $colour-primary;
+
+    font-size: 1.4rem;
+    text-align: center;
+    color: $colour-accent;
+
+    border: 1px solid $colour-accent;
+    //padding: 3rem;
+  }
+
+  &__cel {
+    border: 1px solid $colour-accent;
+    border-top: 0;
+    width: 100%;
+    text-align: center;
+    //padding: 1rem;
+    color: $colour-accent;
+
+    //background-color: yellow;
+  }
+}
+
+// todo Affichage de la partie cptTour 10
+.z-cptTour {
+  display: flex;
+  justify-content: center;
+  width: 40rem;
+  margin: auto;
+  margin-bottom: 2rem;
+
+  color: $colour-accent;
+  //background: blueviolet;
+  //border: 1px solid $colour-accent;
+  //border-bottom: 0;
+  font-size: 1.4rem;
+
+  &__titre {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  &__num {
+  }
+}
+
+.go {
+  background-color: white;
+}
+
+// * affichage du message gagnant
+.flash-ruby {
+  font-size: 15rem;
+  color: $colour-secondary;
+  text-align: center;
+  @include heading-shadow($colour-accent);
+}
+
+#z-flash {
+  //height: 100%;
+}

@@ -1,17 +1,300 @@
-/* Error: Can't find stylesheet to import.
- *    ,
- * 18 | @import "./layout/form";
- *    |         ^^^^^^^^^^^^^^^
- *    '
- *   sass\main.scss 18:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 18 \2502  @import \"./layout/form\";\a    \2502          ^^^^^^^^^^^^^^^\a    \2575 \a   sass\\main.scss 18:9  root stylesheet";
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
+
+html,
+body {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: rgb(0, 0, 0);
+}
+
+.contain {
+  height: 100%;
+}
+
+@font-face {
+  font-family: "SweetSansProRegular";
+  src: url("/public/fonts/SweetSansProRegular.woff");
+}
+@font-face {
+  font-family: "SweetSansProExLight";
+  src: url("/public/fonts/SweetSansProExLight.woff");
+}
+@font-face {
+  font-family: "Pacfont";
+  src: url("/public/fonts/PAC-FONT.TTF");
+}
+@font-face {
+  font-family: "CrackMan";
+  src: url("/public/fonts/CrackMan.TTF");
+}
+@font-face {
+  font-family: "PacfontGood-yYye";
+  src: url("/public/fonts/PacfontGood-yYye.ttf");
+}
+@font-face {
+  font-family: "Pacfont-ZEBZ";
+  src: url("/public/fonts/Pacfont-ZEBZ.ttf");
+}
+@font-face {
+  font-family: "Blomberg";
+  src: url("/public/fonts/Blomberg-8MKKZ.otf");
+}
+@font-face {
+  font-family: "Merry";
+  src: url("/public/fonts/MerryChristmas2021-owOL4.ttf");
+}
+body {
+  font-family: "SweetSansProRegular", "Roboto", sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+  font-weight: 100;
+  line-height: 1.7;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 5rem;
+  font-style: italic;
+}
+
+textarea {
+  font-weight: 100;
+  font-size: 2rem;
+}
+
+.commencer {
+  text-align: center;
+  font-variant-caps: small-caps;
+  width: 200px;
+  background-color: rgb(0, 0, 0);
+  color: rgba(252, 252, 252, 0.8784313725);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 20%;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+.commencer:hover {
+  color: red;
+  cursor: pointer;
+}
+
+/*************************************************************
+    * CSS de page 1.*
+    *************************************************************/
+.titre {
+  display: flex;
+  justify-content: center;
+  font-family: Merry;
+  font-size: 10rem;
+  margin-top: 5rem;
+}
+.titre__baseline {
+  color: #ffffff;
+  text-align: center;
+  padding-right: 1.1rem;
+}
+.titre__baseline--changed {
+  display: inline-block;
+  color: yellow;
+  padding-right: 1.1rem;
+  transform: rotate(-20deg);
+}
+
+.dogs {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  display: flex;
+  justify-content: space-around;
+  font-family: Merry;
+  font-size: 3rem;
+  color: #ffffff;
+}
+.dogs__line {
+  display: inline-flex;
+  box-sizing: border-box;
+  margin: auto;
+  align-items: center;
+}
+.dogs__img {
+  max-width: 90px;
+  padding-left: 2.2rem;
+}
+
+.btn {
+  font-family: Merry;
+  display: flex;
+  flex-direction: column;
+  color: rgba(252, 252, 252, 0.8784313725);
+  font-size: 3.3rem;
+}
+.btn__btn {
+  margin: auto;
+  padding: 1.2rem;
+}
+.btn__btn:hover {
+  color: #ffffff;
+  font-size: 3.9rem;
+  cursor: pointer;
+}
+
+.foot {
+  color: rgba(252, 252, 252, 0.8784313725);
+  font-family: SweetSansProExLight;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.z-tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 40rem;
+  border: 1px solid;
+  margin: auto;
+}
+.z-tab__entete {
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  font-size: 1.4rem;
+  text-align: center;
+  color: rgba(252, 252, 252, 0.8784313725);
+  border: 1px solid rgba(252, 252, 252, 0.8784313725);
+}
+.z-tab__cel {
+  border: 1px solid rgba(252, 252, 252, 0.8784313725);
+  border-top: 0;
+  width: 100%;
+  text-align: center;
+  color: rgba(252, 252, 252, 0.8784313725);
+}
+
+.z-cptTour {
+  display: flex;
+  justify-content: center;
+  width: 40rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  color: rgba(252, 252, 252, 0.8784313725);
+  font-size: 1.4rem;
+}
+.z-cptTour__titre {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.gridCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.jeu-grid {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+  border-top: 5px double blue;
+  border-bottom: 5px double blue;
+}
+
+.jeu-grid__case {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+.jeu-grid__case--changed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.featImg {
+  max-width: 100%;
+}
+
+.go {
+  background-color: white;
+}
+
+.flash-ruby {
+  font-size: 15rem;
+  text-align: center;
+  text-shadow: 0.55rem 0.55rem rgba(252, 252, 252, 0.8784313725);
+}
+
+.score {
+  display: flex;
+  max-width: 40%;
+  margin: auto;
+  font-family: Merry;
+  font-size: 3rem;
+  color: #ffffff;
+}
+.score__titre {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.score__num {
+  font-size: 3rem;
+  color: yellow;
+  margin-right: 6rem;
+}
+.score__lives {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.score__lives--title {
+  margin-right: 1rem;
+}
+.score__lives--ico {
+  max-width: 15px;
+  margin-right: 0.5rem;
+  display: flex;
+}
+.score__ico {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 6rem;
+}
+
+footer {
+  background: rgb(0, 0, 0);
+  color: rgba(252, 252, 252, 0.8784313725);
+  font-family: SweetSansProExLight;
+  font-size: 1.3rem;
+  margin-top: 9rem;
+  min-height: 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  margin: 1rem;
+  padding: 0.25rem 0.25rem 0 0.25rem;
+  border: 0.1rem solid rgba(252, 252, 252, 0.8784313725);
+}
+
+/*# sourceMappingURL=style.css.map */

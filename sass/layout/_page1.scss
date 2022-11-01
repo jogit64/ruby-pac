@@ -1,0 +1,76 @@
+/*************************************************************
+ * CSS de page 1.*
+ *************************************************************/
+
+.titre {
+  @include flex-place($center);
+  //background: $colour-primary;
+  //margin-bottom: 5rem;
+  //font-family: Pacfont-ZEBZ;
+  //font-family: Blomberg;
+  font-family: Merry;
+  font-size: 10rem;
+  margin-top: 5rem;
+
+  &__baseline {
+    color: $colour-secondary;
+    text-align: center;
+    padding-right: 1.1rem;
+  }
+
+  &__baseline--changed {
+    display: inline-block;
+    color: yellow;
+    padding-right: 1.1rem;
+    transform: rotate(-20deg);
+  }
+}
+
+.dogs {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  display: flex;
+  justify-content: space-around;
+  font-family: Merry;
+  font-size: 3rem;
+  color: $colour-secondary;
+
+  &__line {
+    display: inline-flex;
+
+    box-sizing: border-box;
+    margin: auto;
+    align-items: center;
+  }
+
+  &__img {
+    max-width: 90px;
+    padding-left: 2.2rem;
+  }
+}
+
+.btn {
+  font-family: Merry;
+  display: flex;
+  flex-direction: column;
+  color: $colour-accent;
+  font-size: 3.3rem;
+
+  &__btn {
+    margin: auto;
+    padding: 1.2rem;
+  }
+  &__btn:hover {
+    color: $colour-secondary;
+    font-size: 3.9rem;
+    cursor: pointer;
+  }
+}
+
+.foot {
+  color: $colour-accent;
+  font-family: SweetSansProExLight;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 5rem;
+}

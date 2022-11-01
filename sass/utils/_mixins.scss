@@ -7,10 +7,10 @@
 
 @mixin flex-place($place) {
   display: flex;
-  flex: auto;
+  //flex: auto;
   justify-content: $place;
-  align-items: center;
-  height: 10rem;
+  //align-items: center;
+  //height: 10rem;
   //padding: 1rem;
 }
 

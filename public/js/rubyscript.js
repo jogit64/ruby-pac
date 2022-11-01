@@ -1,24 +1,28 @@
 /*************************************************************
- * Plugin:      LoginPress - Customizing the WordPress Login.*
- * Description: LoginPress is the best Login Page Customizer *
- *              in WordPress which allows you to completely  *
- *              change the layout of login, register and     *
- *              forgot password forms.                       *
- * Author:      WPBrigade                                    *
- * visit:       https://wordpress.org/plugins/loginpress/    *
- *************************************************************/
+// * Ruby game.*
+// * Description: Trouver l'os caché dans une maison et *
+// * éviter les amis de Ruby que sont *
+// * Max, Miky et Belch'a et Chichon. *
+// * Author: LeBonUnivers *
+// * visit: https://lebonunivers.fr *
+/*************************************************************/
 
-// todo DECLARATION VARIABLES
+//*************************************************************
+// ! DECLARATION VARIABLES.
+//*************************************************************/
+
 // * les tablbeaux
 let tabHouse = ["", "", "", ""];
 let tabToutou = ["", "", ""];
 let tabSelectorHouse = ["#m1", "#m2", "#m3", "#m4"];
+
 // * les images des toutous
 let rubyImg = "<img src='/public/img/ruby.png' class='featImg'> ";
 let maxImg = "<img src='/public/img/max.png' class='featImg'> ";
 let mikyImg = "<img src='/public/img/miky.png' class='featImg'> ";
 let chichbelImg = "<img src='/public/chichbel.png' class='featImg'> ";
-//let os = "<img src='/public/img/os.png' class='featImg'> ";
+//let os = "<img src='/public/img/osj.png'> ";
+let os = "<img src='/public/img/osj.png' class='score__lives--ico'> ";
 
 // * les compteurs
 let cptOs = 4;
@@ -33,41 +37,44 @@ let rubyDoor = 0;
 
 let numH;
 
-// todo 0 auto run INIT MASQUAGE DES ZONES JEU ET SCORE ----- //
+//*************************************************************
+// ! AUTO RUN.
+//*************************************************************/
+// todo 0 auto run INIT MASQUAGE DES pages2 et page3 ----- //
 init();
 
-// todo ZONE D'ECOUTE DU BOUTON COMMENCER --> CHGT AFFICHAGE DES ZONES DE JEU ET SCORE ----- //
-$("#commencer").click(function () {
-  commencer();
+//*************************************************************
+// ! ECOUTE PLAY + FUNCTION
+//*************************************************************/
+// * BOUTON PLAY pour ouverture page2 ----- //
+$("#play").click(function () {
+  play();
 });
 
-// todo ZONE D'ECOUTE DU BOUTON TOUR SUIVANT --> CHGT AFFICHAGE DES ZONES DE JEU ET SCORE ----- //
+function play() {
+  $("#page1").hide();
+  $("#page2").show();
+  hideRuby();
+  // * on lance la boucle qui affiche les 4 maisons dans la grille
+  displayHouses();
+  displayScore();
+}
+
+//*************************************************************
+// ! ECOUTE TOUR SUIVANT + FUNCTION.
+//*************************************************************/
 $("#tourSuivant").click(function () {
   touSuivant();
 });
 
 // todo  ----- //
 function tourSuivant() {
-  cacheRuby();
-  //afficheJeuGrid();
+  hideRuby();
+  //displayHouses();
   // jeuActif = true;
   reinitGrid();
-  //afficheJeuGrid();
+  //displayHouses();
   console.log("allo");
-}
-
-function commencer() {
-  $("#z-jeuIntro").hide();
-  $("#z-jeuBegin").hide();
-  $("#z-jeuGrid").show();
-  $("#z-tab").show();
-  $("#z-cptTour").show();
-  //$("#z-tourSuivant").hide();
-
-  // * on cache Ruby
-  cacheRuby();
-  // * on lance la boucle qui affiche les 4 maisons dans la grille
-  afficheJeuGrid();
 }
 
 // todo ON JOUE ! ----- //
@@ -99,7 +106,7 @@ $(".jeu-grid__case").click(function () {
       cptOs--;
       // * on rend le jeu inactif
       // * on écoute le bouton suivant
-      // * si suivant on lance cacheRuby et afficheJeuGrid
+      // * si suivant on lance hideRuby et displayHouses
       // * dans la section nombre essai 10 (z-cptTour)
       afficheCpt();
 
@@ -115,7 +122,7 @@ $(".jeu-grid__case").click(function () {
         // ! si ok tabToutou vide
         if (etatTabToutou === "") {
           // * on affiche le toutou avec le numéro (ex toutou1 etc.)
-          let toutouImg = "toutou" + numT;
+          let toutouImg = "dog" + numT;
           // * et on rempli une place dans tabToutou
           tabToutou[numT] = "occupé";
           // * bien sûr on crée l'image pour le DOM
@@ -173,19 +180,21 @@ function afficheCpt() {
   $("#cptTotOs").append(cptTotOs);
 }
 
+function displayScore() {
+  $("#os1").append(os);
+  $("#os2").append(os);
+}
+
 // ! LES FONCTIONS  // ************************************************************
 
 // todo lancé en auto run INIT MASQUAGE DES ZONES JEU ET SCORE ----- //
 function init() {
-  $("#z-jeuGrid").hide();
-  $("#z-tourSuivant").hide();
-  $("#z-scoreOs").hide();
-  $("#z-tab").hide();
-  $("#z-cptTour").hide();
+  $("#page2").hide();
+  $("#page3").hide();
 }
 
 // todo AFFICHAGE DES MAISON AU HASARD ----- //
-function afficheJeuGrid() {
+function displayHouses() {
   for (i = 1; i < 5; i++) {
     // * on tire un numéro au hasard entre 0 et 3
 
@@ -220,7 +229,7 @@ function afficheJeuGrid() {
 }
 
 // todo ON CACHE RUBY !----- //
-function cacheRuby() {
+function hideRuby() {
   // * on cache Ruby au hasard derrière un numéro de porte entre 1 et 4
   rubyDoor = tabSelectorHouse[Math.floor(Math.random() * 4)];
   console.log("Ruby est cachée en : ", rubyDoor);
