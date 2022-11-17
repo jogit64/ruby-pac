@@ -92,8 +92,12 @@ textarea {
 }
 
 /*************************************************************
-    * CSS de page 1.*
-    *************************************************************/
+ * CSS de page 1.*
+ *************************************************************/
+#page1 {
+  z-index: 0;
+}
+
 .titre {
   display: flex;
   justify-content: center;
@@ -119,7 +123,7 @@ textarea {
   display: flex;
   justify-content: space-around;
   font-family: Merry;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #ffffff;
 }
 .dogs__line {
@@ -129,7 +133,7 @@ textarea {
   align-items: center;
 }
 .dogs__img {
-  max-width: 90px;
+  max-width: 110px;
   padding-left: 2.2rem;
 }
 
@@ -156,6 +160,162 @@ textarea {
   font-size: 1.6rem;
   text-align: center;
   margin-top: 5rem;
+}
+
+/*************************************************************
+ * CSS de page 2.*
+ *************************************************************/
+.gridCenter {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.opacitm2 {
+  opacity: 0.5;
+}
+
+.jeu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 5rem;
+  max-width: 45rem;
+}
+.jeu-grid--opacit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 5rem;
+  max-width: 45rem;
+}
+
+.jeu-grid__case {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 50px;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  padding: 1rem;
+}
+.jeu-grid__case--hg {
+  border-right: 5px double blue;
+  border-bottom: 5px double blue;
+  border-left: 5px double black;
+  border-top: 5px double black;
+}
+.jeu-grid__case--hd {
+  border-left: 5px double blue;
+  border-bottom: 5px double blue;
+  border-right: 5px double black;
+  border-top: 5px double black;
+}
+.jeu-grid__case--bg {
+  border-right: 5px double blue;
+  border-top: 5px double blue;
+  border-left: 5px double black;
+  border-bottom: 5px double black;
+}
+.jeu-grid__case--bd {
+  border-top: 5px double blue;
+  border-left: 5px double blue;
+  border-right: 5px double black;
+  border-bottom: 5px double black;
+}
+.jeu-grid__case--changed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 1rem;
+  border: 5px double black;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 1.2rem;
+  max-width: 35%;
+  font-family: Merry;
+  font-size: 3rem;
+  color: #ffffff;
+}
+.score__titre {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.score__num {
+  font-size: 3rem;
+  color: yellow;
+  margin-right: 3rem;
+  margin-left: 1 rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.score__os {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.score__os--title {
+  margin-right: 1rem;
+}
+.score__tour {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 1rem;
+}
+.score__lives--ico {
+  max-width: 15px;
+  margin-right: 0.5rem;
+  display: flex;
+}
+.score__ico {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 6rem;
+}
+
+.next--dark {
+  border: 6px solid red;
+  border-radius: 20%;
+  padding: 1rem;
+  color: yellow;
+  opacity: 0.1;
+}
+.next--light {
+  border: 6px solid red;
+  border-radius: 20%;
+  padding: 1rem;
+  color: yellow;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.btn2 {
+  font-family: Merry;
+  color: rgba(252, 252, 252, 0.8784313725);
+  font-size: 2rem;
+}
+.btn2__btn {
+  padding: 1.2rem;
+}
+.btn2__btn:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+.btn2--opacit {
+  opacity: 0.2;
+}
+
+.featImg {
+  max-width: 100%;
 }
 
 .z-tab {
@@ -194,90 +354,43 @@ textarea {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
 }
-.gridCenter {
-  display: flex;
-  justify-content: center;
-}
-
-.jeu-grid {
-  display: grid;
-  grid-template-columns: 200px 200px;
-  margin-top: 8rem;
-  margin-bottom: 4rem;
-  border-top: 5px double blue;
-  border-bottom: 5px double blue;
-}
-
-.jeu-grid__case {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding: 1rem;
-}
-.jeu-grid__case--changed {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding: 1rem;
-}
-
-.featImg {
-  max-width: 100%;
-}
-
-.go {
-  background-color: white;
-}
-
 .flash-ruby {
   font-size: 15rem;
+  color: #ffffff;
   text-align: center;
   text-shadow: 0.55rem 0.55rem rgba(252, 252, 252, 0.8784313725);
 }
 
-.score {
+/*************************************************************
+ * CSS de page 3.*
+ *************************************************************/
+.flash {
+  width: 100%;
   display: flex;
-  max-width: 40%;
-  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flash__pts {
   font-family: Merry;
-  font-size: 3rem;
-  color: #ffffff;
-}
-.score__titre {
-  margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.score__num {
-  font-size: 3rem;
+  font-size: 6rem;
   color: yellow;
-  margin-right: 6rem;
+  margin-top: 8rem;
 }
-.score__lives {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.flash__img {
+  max-width: 25rem;
+  margin-top: 2rem;
 }
-.score__lives--title {
-  margin-right: 1rem;
-}
-.score__lives--ico {
-  max-width: 15px;
-  margin-right: 0.5rem;
-  display: flex;
-}
-.score__ico {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-left: 6rem;
+
+/*************************************************************
+ * CSS de page 4.*
+ *************************************************************/
+.gameover {
+  font-family: Merry;
+  font-size: 10rem;
+  color: yellow;
+  margin-top: 8rem;
+  text-align: center;
 }
 
 footer {

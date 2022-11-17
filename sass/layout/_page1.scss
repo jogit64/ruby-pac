@@ -2,6 +2,10 @@
  * CSS de page 1.*
  *************************************************************/
 
+#page1 {
+  z-index: 0;
+}
+
 .titre {
   @include flex-place($center);
   //background: $colour-primary;
@@ -32,7 +36,7 @@
   display: flex;
   justify-content: space-around;
   font-family: Merry;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: $colour-secondary;
 
   &__line {
@@ -44,7 +48,7 @@
   }
 
   &__img {
-    max-width: 90px;
+    max-width: 110px;
     padding-left: 2.2rem;
   }
 }

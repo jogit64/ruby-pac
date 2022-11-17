@@ -5,17 +5,32 @@
 .gridCenter {
   display: flex;
   justify-content: center;
+  //background-color: aqua;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.opacitm2 {
+  opacity: 0.5;
 }
 
 // todo Affichage du conteneur grid de z-jeuGrid
 .jeu-grid {
   display: grid;
-  grid-template-columns: 200px 200px;
-  margin-top: 8rem;
-  margin-bottom: 4rem;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 5rem;
+  max-width: 45rem;
+  //column-gap: 5rem;
+  // border-top: 5px double blue;
+  // border-bottom: 5px double blue;
 
-  border-top: 5px double blue;
-  border-bottom: 5px double blue;
+  &--opacit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 5rem;
+    max-width: 45rem;
+    // opacity: 0.5;
+  }
 }
 
 // todo SECTION gridCenter  : Affichage des cases et des images maison et toutous
@@ -23,39 +38,66 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  // width: 70%;
+  row-gap: 50px;
 
-  width: 150px;
-
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
   padding: 1rem;
 
+  &--hg {
+    border-right: 5px double blue;
+    border-bottom: 5px double blue;
+    border-left: 5px double black;
+    border-top: 5px double black;
+  }
+  &--hd {
+    border-left: 5px double blue;
+    border-bottom: 5px double blue;
+    border-right: 5px double black;
+    border-top: 5px double black;
+  }
+  &--bg {
+    border-right: 5px double blue;
+    border-top: 5px double blue;
+    border-left: 5px double black;
+    border-bottom: 5px double black;
+  }
+  &--bd {
+    border-top: 5px double blue;
+    border-left: 5px double blue;
+    border-right: 5px double black;
+    border-bottom: 5px double black;
+  }
+
+  // ! changé par .js
   &--changed {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
-
-    margin-left: 1rem;
-    margin-right: 1rem;
+    width: 70%;
     padding: 1rem;
+
+    //background-color: grey;
+    border: 5px double black;
   }
 }
 
 // todo SECTION score  : Affichage des cases et des images maison et toutous
 .score {
   display: flex;
-  //max-width: 100%;
+  justify-content: center;
   margin: auto;
-  background-color: aliceblue;
-
+  padding: 1.2rem;
+  //background-color: aqua;
+  max-width: 35%;
   font-family: Merry;
   font-size: 3rem;
   color: $colour-secondary;
 
   &__titre {
     margin-right: 1rem;
-    background-color: aliceblue;
+
     // todo mixin flex column center
     display: flex;
     flex-direction: column;
@@ -63,14 +105,10 @@
   }
 
   &__num {
-    //font-family: Blomberg;
     font-size: 3rem;
     color: yellow;
-    margin-right: 6rem;
-  }
-
-  &__lives {
-    //margin-right: 1rem;
+    margin-right: 3rem;
+    margin-left: 1 rem;
 
     // todo mixin flex column center
     display: flex;
@@ -78,9 +116,29 @@
     justify-content: center;
   }
 
-  &__lives--title {
+  &__os {
+    // todo mixin flex column center
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__os--title {
     margin-right: 1rem;
     //background-color: rgb(0, 255, 110);
+  }
+
+  &__tour {
+    // todo mixin flex column center
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    //background-color: red;
+    // margin-left: 6rem;
+    margin-right: 1rem;
   }
 
   &__lives--ico {
@@ -98,6 +156,55 @@
   }
 }
 
+.next {
+  &--dark {
+    border: 6px solid red;
+    border-radius: 20%;
+    padding: 1rem;
+    color: yellow;
+    opacity: 0.1;
+  }
+
+  &--light {
+    border: 6px solid red;
+    border-radius: 20%;
+    padding: 1rem;
+    color: yellow;
+    cursor: pointer;
+    opacity: 1;
+  }
+}
+
+// .nextActif {
+//   border: 6px solid red;
+//   border-radius: 20%;
+//   color: yellow;
+//   opacity: 1;
+// }
+
+.btn2 {
+  font-family: Merry;
+  //display: flex;
+  //flex-direction: column;
+  color: $colour-accent;
+
+  font-size: 2rem;
+
+  &__btn {
+    // margin: auto;
+    padding: 1.2rem;
+    // margin-left: 4rem;
+  }
+  &__btn:hover {
+    color: $colour-secondary;
+    //font-size: 3.3rem;
+    cursor: pointer;
+  }
+
+  &--opacit {
+    opacity: 0.2;
+  }
+}
 // ! CLASSES APPELEES EN .JS -------------------------------------------------- //
 // todo class appelée en .js : affichage des images maison et toutous
 .featImg {
@@ -161,18 +268,10 @@
   }
 }
 
-.go {
-  background-color: white;
-}
-
 // * affichage du message gagnant
 .flash-ruby {
   font-size: 15rem;
   color: $colour-secondary;
   text-align: center;
   @include heading-shadow($colour-accent);
-}
-
-#z-flash {
-  //height: 100%;
 }

@@ -1,0 +1,35 @@
+/*************************************************************
+ * CSS de page 3.*
+ *************************************************************/
+
+// * SECTION z-flash
+.flash {
+  //margin-top: 15rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //align-content: center;
+  //background-color: aqua;
+
+  // ! appellé en .js
+  &__pts {
+    font-family: Merry;
+    font-size: 6rem;
+    color: yellow;
+    margin-top: 8rem;
+  }
+
+  &__img {
+    //max-height: 20rem;
+    max-width: 25rem;
+    margin-top: 2rem;
+
+    // background-color: aqua;
+    // transform: rotate(45deg);
+    //margin: auto;
+    //display: flex;
+  }
+}

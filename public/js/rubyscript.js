@@ -21,97 +21,85 @@ let rubyImg = "<img src='/public/img/ruby.png' class='featImg'> ";
 let maxImg = "<img src='/public/img/max.png' class='featImg'> ";
 let mikyImg = "<img src='/public/img/miky.png' class='featImg'> ";
 let chichbelImg = "<img src='/public/chichbel.png' class='featImg'> ";
-//let os = "<img src='/public/img/osj.png'> ";
 let os = "<img src='/public/img/osj.png' class='score__lives--ico'> ";
+let bigOs = "<img src='/public/img/flashOs.png' class='flash__img'> ";
 
 // * les compteurs
+let scoreNum = 0;
 let cptOs = 4;
-let cptTotOs = 0;
 let cptTour = 10;
 
 //* l'activation du jeu
 let jeuActif = true;
+let nextActif = false;
 
 //* la cache de ruby
 let rubyDoor = 0;
 
+// * la variable pour "construire" (afficher les images) les maisons dans tabHouse
 let numH;
 
 //*************************************************************
 // ! AUTO RUN.
 //*************************************************************/
-// todo 0 auto run INIT MASQUAGE DES pages2 et page3 ----- //
-init();
+// * auto run affiche page1 et masque pages2 et page3 et page4 ----- //
+displayPage1();
 
 //*************************************************************
-// ! ECOUTE PLAY + FUNCTION
+// ! ECOUTE DU BOUTON PLAY.
 //*************************************************************/
-// * BOUTON PLAY pour ouverture page2 ----- //
+// * BOUTON "PLAY"
 $("#play").click(function () {
   play();
 });
 
 function play() {
-  $("#page1").hide();
-  $("#page2").show();
+  displayPage2();
   hideRuby();
-  // * on lance la boucle qui affiche les 4 maisons dans la grille
   displayHouses();
-  displayScore();
+  displayCpt();
+  $("#next").attr("class", "next, next--dark");
 }
 
 //*************************************************************
-// ! ECOUTE TOUR SUIVANT + FUNCTION.
+// ! ON JOUE.
 //*************************************************************/
-$("#tourSuivant").click(function () {
-  touSuivant();
-});
 
-// todo  ----- //
-function tourSuivant() {
-  hideRuby();
-  //displayHouses();
-  // jeuActif = true;
-  reinitGrid();
-  //displayHouses();
-  console.log("allo");
-}
-
-// todo ON JOUE ! ----- //
-// !! on écoute les clics sur les maisons
+// !! on écoute les clics sur les maisons = thisHouse
 $(".jeu-grid__case").click(function () {
   if (jeuActif) {
     const thisHouse = "#" + this.id;
-    console.log("la maison choisie est :", thisHouse);
 
     // !! 1 si la maison correspond à la cache de Ruby
     if (thisHouse == rubyDoor) {
-      // * on lance le flashRuby !
-      flashRuby();
+      // * on désactive la grille
+      //jeuActif = false;
+
+      // * on lance le flash
+      flashOs();
+
       // * on vide la maison et on affiche Ruby
       $(thisHouse).empty();
       $(thisHouse).append(rubyImg);
-      $(thisHouse).attr("class", "jeu-grid__case--changed");
-      // * on gère les compteurs et la continuation/sortie du jeu
-      // * on incrémente le compteur os
-      // * si cptTour > 0 alors
-      // * _____alors on décrémente le compteur tour
-      // * _____sinon on sort du jeu sortieJeu()
-      gestCpt();
+      //$(thisHouse).attr("class", "jeu-grid__case--changed");
+
+      // * on regarde le nombre de tour (continuation ou sortie)
+      // * et on inscrémente les compteurs
+      toursEtCpt();
+
+      // TODO tout ce qui n'est pas ruby devient opacity
     }
 
     // !! 2 sinon si pas Ruby on vide la maison et on affiche l'un des autres toutous
     else {
       // * on décrémente les os
       cptOs--;
-      // * on rend le jeu inactif
-      // * on écoute le bouton suivant
-      // * si suivant on lance hideRuby et displayHouses
-      // * dans la section nombre essai 10 (z-cptTour)
-      afficheCpt();
+
+      displayCpt();
 
       // !_____2a on vide la maison
       $(thisHouse).empty();
+      //  $(thisHouse).attr("class", "jeu-grid__case--changed");
 
       // !_____2b on affiche un toutou au hasard
       for (i = 1; i < 2; i++) {
@@ -133,8 +121,8 @@ $(".jeu-grid__case").click(function () {
           imageT.setAttribute("class", "featImg");
           // * puis on affiche dans le DOM
           $(thisHouse).append(imageT);
-          $(thisHouse).attr("class", "jeu-grid__case--changed");
-          console.log("attention thisHouse est " + thisHouse);
+          // $(thisHouse).attr("class", "jeu-grid__case--changed");
+          //console.log("attention thisHouse est " + thisHouse);
         }
         // ! sinon si tabToutou est occupé on retire 1 à i qui ne progresse pas
         else {
@@ -146,54 +134,114 @@ $(".jeu-grid__case").click(function () {
   }
 });
 
-// todo GESTION DES COMPTEURS ET DE LA CONTINUATION/SORTIE DU JEU ----- //
-function gestCpt() {
-  jeuActif = false;
+//*************************************************************
+// ! GESTION ET AFFICHAGE DES COMPTEURS.
+//*************************************************************/
+
+// ! si compteur fin GAMEOVER sinon NEXT
+function toursEtCpt() {
   if (cptTour < 2) {
-    console.log("fine de partie");
+    jeuActif = false;
+    nextActif = false;
+    gameOver();
+    console.log("gameover");
   } else {
+    jeuActif = false;
+    nextActif = true;
+
     cptTour--;
-    cptTotOs = cptTotOs + cptOs;
-    cptOs = 4;
-    afficheCpt();
+    scoreNum = scoreNum + cptOs;
+
+    displayCpt();
+    console.log("coucou");
+
+    // * on active le bouton next
+    $("#next").attr("class", "next, next--light");
+
+    if (nextActif) {
+      $("#next").click(function () {
+        //jeuActif = false;
+        console.log("coucou2");
+        cptOs = 4;
+        tabHouse = ["", "", "", ""];
+        tabToutou = ["", "", ""];
+
+        $("#m1").empty();
+        $("#m1").attr("class", "jeu-grid__case jeu-grid__case--hg");
+        $("#m2").empty();
+        $("#m2").attr("class", "jeu-grid__case  jeu-grid__case--hd");
+        $("#m3").empty();
+        $("#m3").attr("class", "jeu-grid__case jeu-grid__case--bg");
+        $("#m4").empty();
+        $("#m4").attr("class", "jeu-grid__case jeu-grid__case--bd");
+        //$("#z-jeuGrid").attr("class", "jeu-grid");
+
+        hideRuby();
+        displayHouses();
+        displayCpt();
+        jeuActif = true;
+        nextActif = false;
+      });
+    }
   }
 }
 
-function reinitGrid() {
-  for (i = 1; i < 5; i++) {
-    const urr = "#m" + i;
-    $(urr).empty();
-    $(urr).attr("class", "jeu-grid__case--changed");
-    jeuActif = true;
-    console.log(urr);
-  }
+//*************************************************************
+// ! ECOUTE DU BOUTON NEXT.
+//*************************************************************/
+// * BOUTON "NEXT"
+// if (nextActif) {
+//   $("#next").click(function () {
+//     //jeuActif = false;
+//     console.log("coucou2");
+//     cptOs = 4;
+//     tabHouse = ["", "", "", ""];
+//     tabToutou = ["", "", ""];
+
+//     $("#m1").empty();
+//     $("#m2").empty();
+//     $("#m3").empty();
+//     $("#m4").empty();
+//     $("#z-jeuGrid").attr("class", "jeu-grid");
+
+//     hideRuby();
+//     displayHouses();
+//     displayCpt();
+//     jeuActif = true;
+//     nextActif = false;
+//   });
+// }
+
+// else {
+//   $("#next").attr("class", "next next--inactif");
+// }
+
+// function reinitGrid() {
+//   for (i = 1; i < 5; i++) {
+//     const urr = "#m" + i;
+//     $(urr).empty();
+//     $(urr).attr("class", "jeu-grid__case--changed");
+//     jeuActif = true;
+//     console.log(urr);
+//   }
+// }
+
+// function displayCptTour() {
+//   $("#cptTour").append(cptTour);
+// }
+
+//*************************************************************
+// ! GAMEOVER.
+//*************************************************************/
+function gameOver() {
+  displayPage4();
 }
 
-function afficheCpt() {
-  $("#z-cptTour__num").empty();
-  $("#z-cptTour__num").append(cptTour);
+//*************************************************************
+// ! LES FONCTIONS.
+//*************************************************************/
 
-  $("#cptOs").empty();
-  $("#cptOs").append(cptOs);
-
-  $("#cptTotOs").empty();
-  $("#cptTotOs").append(cptTotOs);
-}
-
-function displayScore() {
-  $("#os1").append(os);
-  $("#os2").append(os);
-}
-
-// ! LES FONCTIONS  // ************************************************************
-
-// todo lancé en auto run INIT MASQUAGE DES ZONES JEU ET SCORE ----- //
-function init() {
-  $("#page2").hide();
-  $("#page3").hide();
-}
-
-// todo AFFICHAGE DES MAISON AU HASARD ----- //
+// * AFFICHER DES MAISON AU HASARD
 function displayHouses() {
   for (i = 1; i < 5; i++) {
     // * on tire un numéro au hasard entre 0 et 3
@@ -207,7 +255,7 @@ function displayHouses() {
       let laMaisonImg = "house" + numH;
 
       // * et on rempli une place dans tabHouse
-      tabHouse[numH] = "occupé";
+      tabHouse[numH] = "déjà construit";
 
       // * bien sûr on crée l'image pour le DOM
       const image = document.createElement("img");
@@ -228,29 +276,82 @@ function displayHouses() {
   }
 }
 
-// todo ON CACHE RUBY !----- //
+// * CACHER RUBY
 function hideRuby() {
   // * on cache Ruby au hasard derrière un numéro de porte entre 1 et 4
   rubyDoor = tabSelectorHouse[Math.floor(Math.random() * 4)];
   console.log("Ruby est cachée en : ", rubyDoor);
 }
 
-// todo Function AFFICHAGE DU MESSAGE FLASH RUBY AVEC DELAY !!! ----- //
-function flashRuby() {
+// * AFFICHER LE FLASH PTS
+function flashOs() {
   $("#z-jeuGrid").hide();
-  $("#z-tourSuivant").hide();
-  $("#z-scoreOs").hide();
-  $("#z-tab").hide();
-  $("#z-cptTour").hide();
-  $("#z-flash").append("RUBY !");
-  setTimeout(delay, 650);
+  $("#z-score").hide();
+
+  $("#page3").show();
+  $("#z-flash__img").append(bigOs);
+  $("#z-flash__pts").append("+", cptOs, "  PTS !");
+
+  setTimeout(delay, 450);
 }
 
 function delay() {
   $("#z-jeuGrid").show();
-  $("#z-scoreOs").show();
-  $("#z-tab").show();
-  $("#z-cptTour").show();
-  $("#z-tourSuivant").show();
+  $("#page3").show();
+  $("#z-score").show();
   $("#z-flash").hide();
 }
+
+//*************************************************************
+// ! FUNCTION DES DISPLAY SIMPLES DE PAGES ET COMPTEURS.
+//*************************************************************/
+
+function displayPage1() {
+  $("#page1").show();
+  $("#page2").hide();
+  $("#page3").hide();
+  $("#page3").hide();
+  $("#page4").hide();
+}
+
+function displayPage2() {
+  $("#page2").show();
+  $("#page1").hide();
+  $("#page3").hide();
+  $("#page4").hide();
+}
+
+function displayPage3() {
+  $("#page2").hide();
+  $("#page1").hide();
+  $("#page3").show();
+  $("#page4").hide();
+}
+
+function displayPage4() {
+  $("#page1").hide();
+  $("#page2").hide();
+  $("#page3").hide();
+  $("#page4").show();
+}
+
+function displayCpt() {
+  $("#scoreNum").empty();
+  $("#scoreNum").append(scoreNum);
+
+  $("#cptOs").empty();
+  $("#cptOs").append(cptOs);
+
+  $("#cptTour").empty();
+  $("#cptTour").append(cptTour);
+}
+
+//*************************************************************
+// TODO BROUILLON.
+//*************************************************************/
+// function displayOs() {
+//   $("#os1").append(os);
+//   $("#os2").append(os);
+//   $("#os3").append(os);
+//   $("#os4").append(os);
+// }

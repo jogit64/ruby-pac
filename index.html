@@ -38,9 +38,9 @@
         <!-- <img class="page1__imgR" src="/public/img/rubylogo.png" alt="logo de Ruby" /> -->
 
         <section class="dogs">
-            <div class="dogs__line">"max"<img src='/public/img/max.png' class='dogs__img'></div>
-            <div class="dogs__line">"miky"<img src='/public/img/miky.png' class='dogs__img'></div>
-            <div class="dogs__line">"chichon belcha"<img src='/public/img/belchich.png' class='dogs__img'></div>
+            <div class="dogs__line">"max"<img src='/public/img/dog0.png' class='dogs__img'></div>
+            <div class="dogs__line">"miky"<img src='/public/img/dog1.png' class='dogs__img'></div>
+            <div class="dogs__line">"chichon belcha"<img src='/public/img/dog2.png' class='dogs__img'></div>
             <div class="dogs__line">"ruby"<img src='/public/img/rubypac.png' class='dogs__img'></div>
             </div>
         </section>
@@ -60,35 +60,63 @@
         *************************************************************/ -->
 
     <section id="page2">
+
+
         <!-- todo SECTION grid  -->
         <section class="gridCenter">
             <section id="z-jeuGrid" class="jeu-grid">
-                <div id="m1" class="jeu-grid__case"></div>
-                <div id="m2" class="jeu-grid__case"></div>
-                <div id="m3" class="jeu-grid__case"></div>
-                <div id="m4" class="jeu-grid__case"></div>
+                <div id="m1" class="jeu-grid__case jeu-grid__case--hg"></div>
+                <div id="m2" class="jeu-grid__case jeu-grid__case--hd"></div>
+                <div id="m3" class="jeu-grid__case jeu-grid__case--bg"></div>
+                <div id="m4" class="jeu-grid__case jeu-grid__case--bd"></div>
             </section>
         </section>
 
-        <section id="z-score" class="score">
-            <div class="score__titre">score</div>
-            <div class="score__num">70</div>
-            <div class="score__lives score__lives--title">os</div>
-            <div id="os1" class="score__lives"></div>
-            <div id="os2" class="score__lives"></div>
-            <div id="os3" class="score__lives"></div>
 
+        <section id="z-score" <class="score">
+            <section id="z-score" class="score">
+
+                <div class="score__titre">score</div>
+                <div id="scoreNum" class="score__num"></div>
+                <div class="score__os score__os--title">os</div>
+                <div id="cptOs" class="score__num"></div>
+
+                <!-- <div id="os1" class="score__lives"></div> -->
+                <!-- <div id="os2" class="score__lives"></div>
+                <div id="os3" class="score__lives"></div>
+                <div id="os4" class="score__lives"></div> -->
+
+            </section>
+            <section class="score">
+                <div class="score__tour">Tour</div>
+                <div id="cptTour" class="score__num"></div>
+                <div id="next">NEXT</div>
+            </section>
         </section>
-    </section>
 
 
-    <!-- /*************************************************************
+        <!-- /*************************************************************
         * page 3.*
         *************************************************************/ -->
 
-    <section id="page3" class="test">
-        page3
-    </section>
+        <section id="page3">
+            <section id="z-flash" class="flash">
+                <div id="z-flash__pts" class="flash__pts"></div>
+                <div id="z-flash__img" class="flash__img"></div>
+            </section>
+        </section>
+
+
+        <!-- /*************************************************************
+        * page 4.*
+        *************************************************************/ -->
+
+        <section id="page4" class="">
+
+            <div id="gameover" class="gameover">GAME OVER</div>
+
+        </section>
+
 </body>
 <script src="/public/js/rubyscript.js" charset="utf-8"></script>
 
