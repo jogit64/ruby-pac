@@ -21,20 +21,21 @@ let rubyImg = "<img src='/public/img/ruby.png' class='featImg'> ";
 let maxImg = "<img src='/public/img/max.png' class='featImg'> ";
 let mikyImg = "<img src='/public/img/miky.png' class='featImg'> ";
 let chichbelImg = "<img src='/public/chichbel.png' class='featImg'> ";
-let os = "<img src='/public/img/osj.png' class='score__lives--ico'> ";
+let os = "<img src='/public/img/osj.png' class='featOs__img'> ";
 let bigOs = "<img src='/public/img/flashOs.png' class='flash__img'> ";
 
 // * les compteurs
-let scoreNum = 0;
-let cptOs = 4;
-let cptTour = 10;
+let scoreNum;
+let cptOs;
+let osToNum;
+let tourNum;
 
 //* l'activation du jeu
-let jeuActif = true;
-let nextActif = false;
+let jeuActif;
+let nextActif;
 
 //* la cache de ruby
-let rubyDoor = 0;
+let rubyDoor;
 
 // * la variable pour "construire" (afficher les images) les maisons dans tabHouse
 let numH;
@@ -43,6 +44,7 @@ let numH;
 // ! AUTO RUN.
 //*************************************************************/
 // * auto run affiche page1 et masque pages2 et page3 et page4 ----- //
+//$("#gov").hide();
 displayPage1();
 
 //*************************************************************
@@ -50,16 +52,69 @@ displayPage1();
 //*************************************************************/
 // * BOUTON "PLAY"
 $("#play").click(function () {
+  initData();
+  emptyDom();
   play();
 });
 
+function initData() {
+  scoreNum = 0;
+  cptOs = 4;
+  osToNum = 0;
+  tourNum = 2;
+  rubyDoor = 0;
+
+  tabHouse = ["", "", "", ""];
+  tabToutou = ["", "", ""];
+}
+
+function emptyDom() {
+  const m = "#m";
+  for (i = 1; i < 5; i++) {
+    const em = m + i;
+    $(em).empty();
+  }
+}
+
 function play() {
+  jeuActif = true;
+  nextActif = false;
+
   displayPage2();
   hideRuby();
   displayHouses();
   displayCpt();
-  $("#next").attr("class", "next, next--dark");
+
+  $("#next").hide();
+  $("#tour").show();
+  $("#tourNum").show();
+  $("#cptOs").show();
+  $("#os").show();
+
+  osToNum = 0;
+  stockOs(cptOs);
 }
+
+function stockOs() {
+  const osPref = "os";
+  for (i = 1; i <= 4; i++) {
+    const osSuf = "#" + osPref + i;
+    $(osSuf).empty();
+  }
+
+  for (i = 1; i <= cptOs; i++) {
+    const osSuf = "#" + osPref + i;
+    $(osSuf).append(os);
+  }
+}
+
+/*************************************************************
+// ! ECOUTE DU BOUTON GOBACK.
+//*************************************************************/
+// * BOUTON "GOBACK"
+$("#goback").click(function () {
+  displayPage1();
+});
 
 //*************************************************************
 // ! ON JOUE.
@@ -67,72 +122,66 @@ function play() {
 
 // !! on écoute les clics sur les maisons = thisHouse
 $(".jeu-grid__case").click(function () {
-  if (jeuActif) {
-    const thisHouse = "#" + this.id;
+  let libre = tabToutou[this.id];
+  if (libre != "toutou") {
+    if (jeuActif) {
+      const thisHouse = "#" + this.id;
 
-    // !! 1 si la maison correspond à la cache de Ruby
-    if (thisHouse == rubyDoor) {
-      // * on désactive la grille
-      //jeuActif = false;
+      // !! 1 si la maison correspond à la cache de Ruby
+      if (thisHouse == rubyDoor) {
+        // * on lance le flash
+        flashOs();
+        console.log("et là alors");
+        // * on vide la maison et on affiche Ruby
+        $(thisHouse).empty();
+        $(thisHouse).append(rubyImg);
 
-      // * on lance le flash
-      flashOs();
+        // fadeCase(thisHouse);
 
-      // * on vide la maison et on affiche Ruby
-      $(thisHouse).empty();
-      $(thisHouse).append(rubyImg);
-      //$(thisHouse).attr("class", "jeu-grid__case--changed");
+        //$(thisHouse).attr("class", "jeu-grid__case jeu-grid__case--opacit");
 
-      // * on regarde le nombre de tour (continuation ou sortie)
-      // * et on inscrémente les compteurs
-      toursEtCpt();
+        //for (i = 1; i < 4; i++) {}
 
-      // TODO tout ce qui n'est pas ruby devient opacity
-    }
+        // * on regarde le nombre de tour (continuation ou sortie)
+        // * on gère le compteur de tour, de points que l'on affiche avec  displayCpt()
+        // * on affiche l'écran NEXT qu'on écoute pour PLAY again
+        toursEtCpt();
+        // TODO tout ce qui n'est pas ruby devient opacity
+      }
 
-    // !! 2 sinon si pas Ruby on vide la maison et on affiche l'un des autres toutous
-    else {
-      // * on décrémente les os
-      cptOs--;
+      // !! 2 sinon si pas Ruby on vide la maison et on affiche l'un des autres toutous
+      else {
+        tabToutou[this.id] = "toutou";
+        //console.log("else tabToutou :", tabToutou);
+        // * on décrémente les os
+        cptOs--;
+        stockOs(cptOs);
 
-      displayCpt();
+        displayCpt();
 
-      // !_____2a on vide la maison
-      $(thisHouse).empty();
-      //  $(thisHouse).attr("class", "jeu-grid__case--changed");
+        // !_____2a on vide la maison
+        $(thisHouse).empty();
+        //  $(thisHouse).attr("class", "jeu-grid__case--changed");
 
-      // !_____2b on affiche un toutou au hasard
-      for (i = 1; i < 2; i++) {
-        // * on tire un numéro au hasard entre 0 et 2
-        const numT = Math.floor(Math.random() * 3);
-        // * on lit tabToutou à l'index et si c'est vide à cet index
-        let etatTabToutou = tabToutou[numT];
-        // ! si ok tabToutou vide
-        if (etatTabToutou === "") {
-          // * on affiche le toutou avec le numéro (ex toutou1 etc.)
-          let toutouImg = "dog" + numT;
-          // * et on rempli une place dans tabToutou
-          tabToutou[numT] = "occupé";
-          // * bien sûr on crée l'image pour le DOM
-          const imageT = document.createElement("img");
-          // * on concatene + les feat de l'image (path pour la src, la class)
-          let toutou = "/public/img/" + toutouImg + ".png";
-          imageT.src = toutou;
-          imageT.setAttribute("class", "featImg");
-          // * puis on affiche dans le DOM
-          $(thisHouse).append(imageT);
-          // $(thisHouse).attr("class", "jeu-grid__case--changed");
-          //console.log("attention thisHouse est " + thisHouse);
-        }
-        // ! sinon si tabToutou est occupé on retire 1 à i qui ne progresse pas
-        else {
-          i = i - 1;
-          continue;
-        }
+        // * AFFICHER UN TOUTOU AU HASARD
+        displayToutou(thisHouse);
       }
     }
   }
 });
+
+// function fadeCase(param) {
+//   for (i = 0; i < 4; i++) {
+//     if (param != tabSelectorHouse[i]) {
+//       $(tabSelectorHouse[i]).attr(
+//         "class",
+//         "jeu-grid__case jeu-grid__case--opacit"
+//       );
+//     } else {
+//       continue;
+//     }
+//   }
+// }
 
 //*************************************************************
 // ! GESTION ET AFFICHAGE DES COMPTEURS.
@@ -140,101 +189,59 @@ $(".jeu-grid__case").click(function () {
 
 // ! si compteur fin GAMEOVER sinon NEXT
 function toursEtCpt() {
-  if (cptTour < 2) {
+  if (tourNum < 2) {
     jeuActif = false;
     nextActif = false;
     gameOver();
-    console.log("gameover");
   } else {
     jeuActif = false;
     nextActif = true;
 
-    cptTour--;
-    scoreNum = scoreNum + cptOs;
-
+    tourNum--;
+    osToNum = cptOs * 100;
+    scoreNum = scoreNum + osToNum;
     displayCpt();
-    console.log("coucou");
 
-    // * on active le bouton next
-    $("#next").attr("class", "next, next--light");
+    $("#next").show();
+    $("#tour").hide();
+    $("#tourNum").hide();
+    $("#cptOs").hide();
+    $("#os").hide();
 
     if (nextActif) {
       $("#next").click(function () {
-        //jeuActif = false;
-        console.log("coucou2");
         cptOs = 4;
         tabHouse = ["", "", "", ""];
         tabToutou = ["", "", ""];
 
-        $("#m1").empty();
-        $("#m1").attr("class", "jeu-grid__case jeu-grid__case--hg");
-        $("#m2").empty();
-        $("#m2").attr("class", "jeu-grid__case  jeu-grid__case--hd");
-        $("#m3").empty();
-        $("#m3").attr("class", "jeu-grid__case jeu-grid__case--bg");
-        $("#m4").empty();
-        $("#m4").attr("class", "jeu-grid__case jeu-grid__case--bd");
-        //$("#z-jeuGrid").attr("class", "jeu-grid");
+        // $("#m1").empty();
+        // //  $("#m1").attr("class", "jeu-grid__case jeu-grid__case--hg");
+        // $("#m2").empty();
+        // //$("#m2").attr("class", "jeu-grid__case  jeu-grid__case--hd");
+        // $("#m3").empty();
+        // //$("#m3").attr("class", "jeu-grid__case jeu-grid__case--bg");
+        // $("#m4").empty();
+        // //$("#m4").attr("class", "jeu-grid__case jeu-grid__case--bd");
+        // //$("#z-jeuGrid").attr("class", "jeu-grid");
 
-        hideRuby();
-        displayHouses();
-        displayCpt();
-        jeuActif = true;
-        nextActif = false;
+        emptyDom();
+        play();
       });
     }
   }
 }
 
 //*************************************************************
-// ! ECOUTE DU BOUTON NEXT.
-//*************************************************************/
-// * BOUTON "NEXT"
-// if (nextActif) {
-//   $("#next").click(function () {
-//     //jeuActif = false;
-//     console.log("coucou2");
-//     cptOs = 4;
-//     tabHouse = ["", "", "", ""];
-//     tabToutou = ["", "", ""];
-
-//     $("#m1").empty();
-//     $("#m2").empty();
-//     $("#m3").empty();
-//     $("#m4").empty();
-//     $("#z-jeuGrid").attr("class", "jeu-grid");
-
-//     hideRuby();
-//     displayHouses();
-//     displayCpt();
-//     jeuActif = true;
-//     nextActif = false;
-//   });
-// }
-
-// else {
-//   $("#next").attr("class", "next next--inactif");
-// }
-
-// function reinitGrid() {
-//   for (i = 1; i < 5; i++) {
-//     const urr = "#m" + i;
-//     $(urr).empty();
-//     $(urr).attr("class", "jeu-grid__case--changed");
-//     jeuActif = true;
-//     console.log(urr);
-//   }
-// }
-
-// function displayCptTour() {
-//   $("#cptTour").append(cptTour);
-// }
-
-//*************************************************************
 // ! GAMEOVER.
 //*************************************************************/
 function gameOver() {
-  displayPage4();
+  console.log("gameover ok");
+
+  //displayPage4();
+  // displayGameover();
+  $("#gov").show();
+  // $("#gameoverNum").empty();
+  // $("#gameoverNum").append(scoreNum);
 }
 
 //*************************************************************
@@ -286,20 +293,60 @@ function hideRuby() {
 // * AFFICHER LE FLASH PTS
 function flashOs() {
   $("#z-jeuGrid").hide();
-  $("#z-score").hide();
-
+  $("#z-score1").hide();
+  $("#z-score2").hide();
+  console.log("ha tiens");
   $("#page3").show();
-  $("#z-flash__img").append(bigOs);
-  $("#z-flash__pts").append("+", cptOs, "  PTS !");
 
-  setTimeout(delay, 450);
+  $("#z-flash").show();
+  $("#z-flash__img").append(bigOs);
+  $("#z-flash__pts").append("+", cptOs * 100, "  PTS !");
+
+  setTimeout(delay, 850);
 }
 
 function delay() {
   $("#z-jeuGrid").show();
-  $("#page3").show();
-  $("#z-score").show();
+  //$("#page3").show();
+  $("#z-score1").show();
+  $("#z-score2").show();
   $("#z-flash").hide();
+  $("#z-flash__img").empty();
+  $("#z-flash__pts").empty();
+  //console.log("#z-flash__img : ", $("#z-flash__img"));
+  //console.log("#z-flash__pts : ", z-flash__pts);
+}
+
+// * AFFICHER LES TOUTOUS AU HASARD
+function displayToutou(param) {
+  for (i = 1; i < 2; i++) {
+    // * on tire un numéro au hasard entre 0 et 2
+    const numT = Math.floor(Math.random() * 3);
+    // * on lit tabToutou à l'index et si c'est vide à cet index
+    let etatTabToutou = tabToutou[numT];
+    // ! si ok tabToutou vide
+    if (etatTabToutou === "") {
+      // * on affiche le toutou avec le numéro (ex toutou1 etc.)
+      let toutouImg = "dog" + numT;
+      // * et on rempli une place dans tabToutou
+      tabToutou[numT] = "toutou";
+      // * bien sûr on crée l'image pour le DOM
+      const imageT = document.createElement("img");
+      // * on concatene + les feat de l'image (path pour la src, la class)
+      let toutou = "/public/img/" + toutouImg + ".png";
+      imageT.src = toutou;
+      imageT.setAttribute("class", "featImg");
+      // * puis on affiche dans le DOM
+      $(param).append(imageT);
+      // $(thisHouse).attr("class", "jeu-grid__case--changed");
+      //console.log("attention thisHouse est " + thisHouse);
+    }
+    // ! sinon si tabToutou est occupé on retire 1 à i qui ne progresse pas
+    else {
+      i = i - 1;
+      continue;
+    }
+  }
 }
 
 //*************************************************************
@@ -310,20 +357,19 @@ function displayPage1() {
   $("#page1").show();
   $("#page2").hide();
   $("#page3").hide();
-  $("#page3").hide();
   $("#page4").hide();
 }
 
 function displayPage2() {
-  $("#page2").show();
   $("#page1").hide();
+  $("#page2").show();
   $("#page3").hide();
   $("#page4").hide();
 }
 
 function displayPage3() {
-  $("#page2").hide();
   $("#page1").hide();
+  $("#page2").hide();
   $("#page3").show();
   $("#page4").hide();
 }
@@ -342,8 +388,8 @@ function displayCpt() {
   $("#cptOs").empty();
   $("#cptOs").append(cptOs);
 
-  $("#cptTour").empty();
-  $("#cptTour").append(cptTour);
+  $("#tourNum").empty();
+  $("#tourNum").append(tourNum);
 }
 
 //*************************************************************

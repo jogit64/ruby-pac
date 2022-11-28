@@ -2,209 +2,133 @@
  * CSS de page 2.*
  *************************************************************/
 
+//*************************************************************
+// ! CONTENEUR DE jeu-grid.
+//*************************************************************/
 .gridCenter {
   display: flex;
   justify-content: center;
-  //background-color: aqua;
   margin-top: 4rem;
   margin-bottom: 4rem;
+  //background-color: aqua;
 }
 
-.opacitm2 {
-  opacity: 0.5;
-}
-
-// todo Affichage du conteneur grid de z-jeuGrid
+//*************************************************************
+// ! jeu-grid (+ ID z-jeuGrid).
+//*************************************************************/
 .jeu-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 5rem;
   max-width: 45rem;
-  //column-gap: 5rem;
-  // border-top: 5px double blue;
-  // border-bottom: 5px double blue;
+  // background-color: red;
 
-  &--opacit {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 5rem;
-    max-width: 45rem;
-    // opacity: 0.5;
-  }
-}
-
-// todo SECTION gridCenter  : Affichage des cases et des images maison et toutous
-.jeu-grid__case {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // width: 70%;
-  row-gap: 50px;
-
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
-  padding: 1rem;
-
-  &--hg {
-    border-right: 5px double blue;
-    border-bottom: 5px double blue;
-    border-left: 5px double black;
-    border-top: 5px double black;
-  }
-  &--hd {
-    border-left: 5px double blue;
-    border-bottom: 5px double blue;
-    border-right: 5px double black;
-    border-top: 5px double black;
-  }
-  &--bg {
-    border-right: 5px double blue;
-    border-top: 5px double blue;
-    border-left: 5px double black;
-    border-bottom: 5px double black;
-  }
-  &--bd {
-    border-top: 5px double blue;
-    border-left: 5px double blue;
-    border-right: 5px double black;
-    border-bottom: 5px double black;
-  }
-
-  // ! changé par .js
-  &--changed {
+  &__case {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    row-gap: 50px;
+
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
     padding: 1rem;
 
-    //background-color: grey;
-    border: 5px double black;
+    &--hg {
+      border-right: 5px double blue;
+      border-bottom: 5px double blue;
+      border-left: 5px double black;
+      border-top: 5px double black;
+    }
+    &--hd {
+      border-left: 5px double blue;
+      border-bottom: 5px double blue;
+      border-right: 5px double black;
+      border-top: 5px double black;
+    }
+    &--bg {
+      border-right: 5px double blue;
+      border-top: 5px double blue;
+      border-left: 5px double black;
+      border-bottom: 5px double black;
+    }
+    &--bd {
+      border-top: 5px double blue;
+      border-left: 5px double blue;
+      border-right: 5px double black;
+      border-bottom: 5px double black;
+    }
+
+    &--opacit {
+      opacity: 0.4;
+    }
   }
 }
 
-// todo SECTION score  : Affichage des cases et des images maison et toutous
-.score {
+//*************************************************************
+// ! LIGNE score et os txt et num (+ ID z-score).
+//*************************************************************/
+.lineScore {
   display: flex;
   justify-content: center;
   margin: auto;
-  padding: 1.2rem;
-  //background-color: aqua;
-  max-width: 35%;
+  //padding: 1.2rem;
+  max-width: 26%;
+  //background-color: blue;
+
   font-family: Merry;
   font-size: 3rem;
   color: $colour-secondary;
 
-  &__titre {
-    margin-right: 1rem;
-
-    // todo mixin flex column center
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  &--margeL {
+    margin-left: 3rem;
   }
 
   &__num {
     font-size: 3rem;
     color: yellow;
-    margin-right: 3rem;
-    margin-left: 1 rem;
+    margin-right: 0rem;
+    margin-left: 2rem;
 
-    // todo mixin flex column center
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__os {
-    // todo mixin flex column center
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__os--title {
-    margin-right: 1rem;
-    //background-color: rgb(0, 255, 110);
-  }
-
-  &__tour {
-    // todo mixin flex column center
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    //background-color: red;
-    // margin-left: 6rem;
-    margin-right: 1rem;
-  }
-
-  &__lives--ico {
-    max-width: 15px;
-    margin-right: 0.5rem;
-    display: flex;
-  }
-
-  &__ico {
-    // todo mixin
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-left: 6rem;
+    &--blue {
+      color: blue;
+    }
   }
 }
 
-.next {
-  &--dark {
-    border: 6px solid red;
-    border-radius: 20%;
-    padding: 1rem;
-    color: yellow;
-    opacity: 0.1;
-  }
+.lineScore2 {
+  text-align: center;
 
-  &--light {
-    border: 6px solid red;
-    border-radius: 20%;
-    padding: 1rem;
-    color: yellow;
-    cursor: pointer;
-    opacity: 1;
-  }
-}
-
-// .nextActif {
-//   border: 6px solid red;
-//   border-radius: 20%;
-//   color: yellow;
-//   opacity: 1;
-// }
-
-.btn2 {
-  font-family: Merry;
-  //display: flex;
-  //flex-direction: column;
-  color: $colour-accent;
-
-  font-size: 2rem;
-
-  &__btn {
-    // margin: auto;
-    padding: 1.2rem;
-    // margin-left: 4rem;
-  }
-  &__btn:hover {
+  &__line {
+    display: inline-flex;
+    margin: auto;
+    font-family: Merry;
+    font-size: 3rem;
+    // background-color: aqua;
     color: $colour-secondary;
-    //font-size: 3.3rem;
-    cursor: pointer;
   }
 
-  &--opacit {
-    opacity: 0.2;
+  &__try {
+    color: blue;
+  }
+
+  &__dline {
+    //background-color: red;
+    // border-radius: 50%;
+    // border: 5px solid yellow;
+    // margin-top: 1rem;
+    color: blue;
+    //margin: auto;
+    //padding: 1.2rem;
+    cursor: pointer;
   }
 }
+
+.featOs {
+  &__img {
+    max-width: 2rem;
+  }
+}
+
 // ! CLASSES APPELEES EN .JS -------------------------------------------------- //
 // todo class appelée en .js : affichage des images maison et toutous
 .featImg {
@@ -212,66 +136,101 @@
 }
 
 //! ----------------A TRIER--------------------------------------------------
-// todo Affichage de la partie score
-.z-tab {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 40rem;
-  border: 1px solid;
-  margin: auto;
-  //padding: 1rem;
+// // todo Affichage de la partie score
+// .z-tab {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   width: 40rem;
+//   border: 1px solid;
+//   margin: auto;
+//   //padding: 1rem;
 
-  &__entete {
-    width: 100%;
-    background-color: $colour-primary;
+//   &__entete {
+//     width: 100%;
+//     background-color: $colour-primary;
 
-    font-size: 1.4rem;
-    text-align: center;
-    color: $colour-accent;
+//     font-size: 1.4rem;
+//     text-align: center;
+//     color: $colour-accent;
 
-    border: 1px solid $colour-accent;
-    //padding: 3rem;
-  }
+//     border: 1px solid $colour-accent;
+//     //padding: 3rem;
+//   }
 
-  &__cel {
-    border: 1px solid $colour-accent;
-    border-top: 0;
-    width: 100%;
-    text-align: center;
-    //padding: 1rem;
-    color: $colour-accent;
+//   &__cel {
+//     border: 1px solid $colour-accent;
+//     border-top: 0;
+//     width: 100%;
+//     text-align: center;
+//     //padding: 1rem;
+//     color: $colour-accent;
 
-    //background-color: yellow;
-  }
-}
+//     //background-color: yellow;
+//   }
+// }
 
-// todo Affichage de la partie cptTour 10
-.z-cptTour {
-  display: flex;
-  justify-content: center;
-  width: 40rem;
-  margin: auto;
-  margin-bottom: 2rem;
+// // todo Affichage de la partie cptTour 10
+// .z-cptTour {
+//   display: flex;
+//   justify-content: center;
+//   width: 40rem;
+//   margin: auto;
+//   margin-bottom: 2rem;
 
-  color: $colour-accent;
-  //background: blueviolet;
-  //border: 1px solid $colour-accent;
-  //border-bottom: 0;
-  font-size: 1.4rem;
+//   color: $colour-accent;
+//   font-size: 1.4rem;
 
-  &__titre {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-  }
+//   &__titre {
+//     padding-right: 0.5rem;
+//     padding-left: 0.5rem;
+//   }
 
-  &__num {
-  }
-}
+//   &__num {
+//   }
+// }
 
-// * affichage du message gagnant
-.flash-ruby {
-  font-size: 15rem;
-  color: $colour-secondary;
-  text-align: center;
-  @include heading-shadow($colour-accent);
-}
+// // * affichage du message gagnant
+// .flash-ruby {
+//   font-size: 15rem;
+//   color: $colour-secondary;
+//   text-align: center;
+//   @include heading-shadow($colour-accent);
+// }
+
+// .next {
+//   &--dark {
+//     border: 6px solid red;
+//     border-radius: 20%;
+//     padding: 1rem;
+//     color: yellow;
+//     opacity: 0.1;
+//   }
+
+//   &--light {
+//     border: 6px solid red;
+//     border-radius: 20%;
+//     padding: 1rem;
+//     color: yellow;
+//     cursor: pointer;
+//     opacity: 1;
+//   }
+// }
+
+// .btn2 {
+//   font-family: Merry;
+//   color: $colour-accent;
+//   font-size: 2rem;
+
+//   &__btn {
+//     padding: 1.2rem;
+//   }
+
+//   &__btn:hover {
+//     color: $colour-secondary;
+//     cursor: pointer;
+//   }
+
+//   &--opacit {
+//     opacity: 0.2;
+//   }
+// }

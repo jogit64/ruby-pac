@@ -172,23 +172,12 @@ textarea {
   margin-bottom: 4rem;
 }
 
-.opacitm2 {
-  opacity: 0.5;
-}
-
 .jeu-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 5rem;
   max-width: 45rem;
 }
-.jeu-grid--opacit {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 5rem;
-  max-width: 45rem;
-}
-
 .jeu-grid__case {
   display: flex;
   justify-content: center;
@@ -222,143 +211,56 @@ textarea {
   border-right: 5px double black;
   border-bottom: 5px double black;
 }
-.jeu-grid__case--changed {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  padding: 1rem;
-  border: 5px double black;
+.jeu-grid__case--opacit {
+  opacity: 0.4;
 }
 
-.score {
+.lineScore {
   display: flex;
   justify-content: center;
   margin: auto;
-  padding: 1.2rem;
-  max-width: 35%;
+  max-width: 26%;
   font-family: Merry;
   font-size: 3rem;
   color: #ffffff;
 }
-.score__titre {
-  margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.lineScore--margeL {
+  margin-left: 3rem;
 }
-.score__num {
+.lineScore__num {
   font-size: 3rem;
   color: yellow;
-  margin-right: 3rem;
-  margin-left: 1 rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-right: 0rem;
+  margin-left: 2rem;
 }
-.score__os {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.score__os--title {
-  margin-right: 1rem;
-}
-.score__tour {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 1rem;
-}
-.score__lives--ico {
-  max-width: 15px;
-  margin-right: 0.5rem;
-  display: flex;
-}
-.score__ico {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-left: 6rem;
+.lineScore__num--blue {
+  color: blue;
 }
 
-.next--dark {
-  border: 6px solid red;
-  border-radius: 20%;
-  padding: 1rem;
-  color: yellow;
-  opacity: 0.1;
+.lineScore2 {
+  text-align: center;
 }
-.next--light {
-  border: 6px solid red;
-  border-radius: 20%;
-  padding: 1rem;
-  color: yellow;
-  cursor: pointer;
-  opacity: 1;
-}
-
-.btn2 {
+.lineScore2__line {
+  display: inline-flex;
+  margin: auto;
   font-family: Merry;
-  color: rgba(252, 252, 252, 0.8784313725);
-  font-size: 2rem;
-}
-.btn2__btn {
-  padding: 1.2rem;
-}
-.btn2__btn:hover {
+  font-size: 3rem;
   color: #ffffff;
+}
+.lineScore2__try {
+  color: blue;
+}
+.lineScore2__dline {
+  color: blue;
   cursor: pointer;
 }
-.btn2--opacit {
-  opacity: 0.2;
+
+.featOs__img {
+  max-width: 2rem;
 }
 
 .featImg {
   max-width: 100%;
-}
-
-.z-tab {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 40rem;
-  border: 1px solid;
-  margin: auto;
-}
-.z-tab__entete {
-  width: 100%;
-  background-color: rgb(0, 0, 0);
-  font-size: 1.4rem;
-  text-align: center;
-  color: rgba(252, 252, 252, 0.8784313725);
-  border: 1px solid rgba(252, 252, 252, 0.8784313725);
-}
-.z-tab__cel {
-  border: 1px solid rgba(252, 252, 252, 0.8784313725);
-  border-top: 0;
-  width: 100%;
-  text-align: center;
-  color: rgba(252, 252, 252, 0.8784313725);
-}
-
-.z-cptTour {
-  display: flex;
-  justify-content: center;
-  width: 40rem;
-  margin: auto;
-  margin-bottom: 2rem;
-  color: rgba(252, 252, 252, 0.8784313725);
-  font-size: 1.4rem;
-}
-.z-cptTour__titre {
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-.flash-ruby {
-  font-size: 15rem;
-  color: #ffffff;
-  text-align: center;
-  text-shadow: 0.55rem 0.55rem rgba(252, 252, 252, 0.8784313725);
 }
 
 /*************************************************************
@@ -386,11 +288,59 @@ textarea {
  * CSS de page 4.*
  *************************************************************/
 .gameover {
-  font-family: Merry;
-  font-size: 10rem;
-  color: yellow;
-  margin-top: 8rem;
+  display: block;
   text-align: center;
+}
+.gameover__title {
+  font-family: Merry;
+  font-size: 4rem;
+  color: red;
+  text-align: center;
+}
+.gameover__txt {
+  margin-top: 2rem;
+  font-family: Merry;
+  font-size: 2.5rem;
+  color: rgba(252, 252, 252, 0.8784313725);
+  text-align: center;
+  font-style: italic;
+}
+.gameover__txt--y {
+  margin-top: 1rem;
+  font-family: Merry;
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 0.2rem;
+  font-style: italic;
+  color: yellow;
+}
+.gameover__num {
+  font-size: 2rem;
+  color: rgba(252, 252, 252, 0.8784313725);
+  font-family: Merry;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.gameover__input {
+  display: inline-flex;
+  margin: auto;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  background-color: rgb(30, 30, 30);
+  color: rgba(252, 252, 252, 0.8784313725);
+  font-family: Merry;
+  font-size: 2rem;
+  padding: 1.2rem;
+  border: none;
+}
+.gameover__btn {
+  margin-top: 1.2rem;
+  font-family: Merry;
+  font-size: 2.5rem;
+  color: rgba(252, 252, 252, 0.8784313725);
+  text-align: center;
+  font-style: italic;
+  cursor: pointer;
 }
 
 footer {

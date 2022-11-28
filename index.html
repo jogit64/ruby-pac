@@ -73,49 +73,69 @@
         </section>
 
 
-        <section id="z-score" <class="score">
-            <section id="z-score" class="score">
+        <section id="z-score1" class="lineScore">
+            <div>score</div>
+            <div id="scoreNum" class="lineScore__num"></div>
+            <!-- <div id="os" class="lineScore--margeL">os</div>
+            <div id="cptOs" class="lineScore__num"></div> -->
 
-                <div class="score__titre">score</div>
-                <div id="scoreNum" class="score__num"></div>
-                <div class="score__os score__os--title">os</div>
-                <div id="cptOs" class="score__num"></div>
-
-                <!-- <div id="os1" class="score__lives"></div> -->
-                <!-- <div id="os2" class="score__lives"></div>
-                <div id="os3" class="score__lives"></div>
-                <div id="os4" class="score__lives"></div> -->
-
-            </section>
-            <section class="score">
-                <div class="score__tour">Tour</div>
-                <div id="cptTour" class="score__num"></div>
-                <div id="next">NEXT</div>
-            </section>
+            <div class="lineScore--margeL"></div>
+            <div id="os1"></div>
+            <div id="os2"></div>
+            <div id="os3"></div>
+            <div id="os4"></div>
         </section>
 
+        <section id="z-score2" class="lineScore2">
+            <div class="lineScore2__line">
+                <div id="tour" class="lineScore2__try">Essai</div>
+                <div id="tourNum" class="lineScore__num lineScore__num--blue"></div>
+                <div id="next" class="lineScore2__dline">NEXT</div>
+            </div>
+        </section>
+    </section>
 
-        <!-- /*************************************************************
+    <!-- /*************************************************************
         * page 3.*
         *************************************************************/ -->
 
-        <section id="page3">
-            <section id="z-flash" class="flash">
-                <div id="z-flash__pts" class="flash__pts"></div>
-                <div id="z-flash__img" class="flash__img"></div>
-            </section>
+    <section id="page3">
+        <section id="z-flash" class="flash">
+            <div id="z-flash__pts" class="flash__pts"></div>
+            <div id="z-flash__img" class="flash__img"></div>
         </section>
+    </section>
 
 
-        <!-- /*************************************************************
+    <!-- /*************************************************************
         * page 4.*
         *************************************************************/ -->
 
-        <section id="page4" class="">
+    <div id="gov" class="gameover__title">GAME OVER</div>
 
-            <div id="gameover" class="gameover">GAME OVER</div>
+    <!-- /*************************************************************
+        * page 5.*
+        *************************************************************/ -->
 
+    <section id="page3">
+
+        <h1 class="titre">
+            <span class="titre__baseline">r</span><span class="titre__baseline--changed">u</span><span
+                class="titre__baseline">b</span><span class="titre__baseline">y</span>
+        </h1>
+
+        <section class="gameover">
+            <div id="govk" class="gameover__title">GAME OVER</div>
+            <div class="gameover__txt">Your score</div>
+            <div id="gameoverNum" class="gameover__num"></div>
+            <div class="gameover__txt--y">Enter your name</div>
+            <div class="gameover__txt--y">Highscorer!</div>
+            <input type="text" class="gameover__input" placeholder="enter your name">
+            <button class="gameover__input">OK</button>
+            <div id="goback" class="gameover__btn">Go back</div>
         </section>
+
+    </section>
 
 </body>
 <script src="/public/js/rubyscript.js" charset="utf-8"></script>
