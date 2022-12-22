@@ -11,18 +11,29 @@
 // ! DECLARATION VARIABLES.
 //*************************************************************/
 
+//let path = "";
+let path = "/rubypac";
 // * les tablbeaux
 let tabHouse = ["", "", "", ""];
 let tabToutou = ["", "", ""];
 let tabSelectorHouse = ["#m1", "#m2", "#m3", "#m4"];
 
 // * les images des toutous
-let rubyImg = "<img src='/public/img/ruby.png' class='featImg'> ";
-let maxImg = "<img src='/public/img/max.png' class='featImg'> ";
-let mikyImg = "<img src='/public/img/miky.png' class='featImg'> ";
-let chichbelImg = "<img src='/public/chichbel.png' class='featImg'> ";
-let os = "<img src='/public/img/osj.png' class='featOs__img'> ";
-let bigOs = "<img src='/public/img/flashOs.png' class='flash__img'> ";
+let rubyImg = "<img src='" + path + "/public/img/ruby.png' class='featImg'> ";
+let maxImg = "<img src='" + path + "/public/img/max.png' class='featImg'> ";
+let mikyImg = "<img src='" + path + "/public/img/miky.png' class='featImg'> ";
+let chichbelImg =
+  "<img src='" + path + "/public/chichbel.png' class='featImg'> ";
+let os = "<img src='" + path + "/public/img/osj.png' class='featOs__img'> ";
+let bigOs =
+  "<img src='" +
+  path +
+  "/public/img/flashOs.png' class='containerFlash__img'> ";
+
+let p1ma = "<img src='" + path + "/public/img/dog0.png' class='dogs__img'>";
+let p1mi = "<img src='" + path + "/public/img/dog1.png' class='dogs__img'>";
+let p1cb = "<img src='" + path + "/public/img/dog2.png' class='dogs__img'>";
+let p1ru = "<img src='" + path + "/public/img/rubypac.png' class='dogs__img'>";
 
 // * les compteurs
 let scoreNum;
@@ -43,8 +54,7 @@ let numH;
 //*************************************************************
 // ! AUTO RUN.
 //*************************************************************/
-// * auto run affiche page1 et masque pages2 et page3 et page4 ----- //
-//$("#gov").hide();
+// * AFFICHE LA PAGE 1 SEULEMENT
 displayPage1();
 
 //*************************************************************
@@ -57,6 +67,10 @@ $("#play").click(function () {
   play();
 });
 
+//*************************************************************
+// ! FONCTIONS D'INITIALISATION DE PARTIE.
+//*************************************************************/
+// * INITIALISATION DES VARIABLES ET TABLEAUX
 function initData() {
   scoreNum = 0;
   cptOs = 4;
@@ -68,6 +82,7 @@ function initData() {
   tabToutou = ["", "", ""];
 }
 
+// * VIDAGE DES CASES DE LA GRILLE
 function emptyDom() {
   const m = "#m";
   for (i = 1; i < 5; i++) {
@@ -76,16 +91,22 @@ function emptyDom() {
   }
 }
 
+// * ACTIVATION DU JEU ET AFFICHAGE DE LA PAGE2 (LES CASES)
 function play() {
   jeuActif = true;
   nextActif = false;
 
+  $("#gov").hide();
+  $("#next").hide();
+  $("#clicNext").hide();
+
   displayPage2();
+
   hideRuby();
   displayHouses();
   displayCpt();
 
-  $("#next").hide();
+  $("#clicnNext").hide();
   $("#tour").show();
   $("#tourNum").show();
   $("#cptOs").show();
@@ -95,6 +116,7 @@ function play() {
   stockOs(cptOs);
 }
 
+// * DEPUIS PLAY : AFFICHAGE DES OS A GAGNER
 function stockOs() {
   const osPref = "os";
   for (i = 1; i <= 4; i++) {
@@ -116,12 +138,31 @@ $("#goback").click(function () {
   displayPage1();
 });
 
+/*************************************************************
+// ! ECOUTE DU BOUTON OK.
+//*************************************************************/
+// * BOUTON "OK"
+$("#okbtn").click(function () {
+  insertScore();
+});
+
+// fonction enregistrement BDD //
+function insertScore() {
+  var who = document.getElementById("who").value;
+  if (!who || who.length < 2 || who.length > 8) {
+    alert("entrez un nom entre 2 et 8 caractères");
+  } else {
+    top.document.location =
+      "/rubypac/insertscore.php?w=" + who + "&s=" + scoreNum;
+  }
+}
+
 //*************************************************************
 // ! ON JOUE.
 //*************************************************************/
 
 // !! on écoute les clics sur les maisons = thisHouse
-$(".jeu-grid__case").click(function () {
+$(".grid__case").click(function () {
   let libre = tabToutou[this.id];
   if (libre != "toutou") {
     if (jeuActif) {
@@ -131,14 +172,14 @@ $(".jeu-grid__case").click(function () {
       if (thisHouse == rubyDoor) {
         // * on lance le flash
         flashOs();
-        console.log("et là alors");
+
         // * on vide la maison et on affiche Ruby
         $(thisHouse).empty();
         $(thisHouse).append(rubyImg);
 
         // fadeCase(thisHouse);
 
-        //$(thisHouse).attr("class", "jeu-grid__case jeu-grid__case--opacit");
+        //$(thisHouse).attr("class", "grid__case grid__case--opacit");
 
         //for (i = 1; i < 4; i++) {}
 
@@ -161,7 +202,7 @@ $(".jeu-grid__case").click(function () {
 
         // !_____2a on vide la maison
         $(thisHouse).empty();
-        //  $(thisHouse).attr("class", "jeu-grid__case--changed");
+        //  $(thisHouse).attr("class", "grid__case--changed");
 
         // * AFFICHER UN TOUTOU AU HASARD
         displayToutou(thisHouse);
@@ -175,7 +216,7 @@ $(".jeu-grid__case").click(function () {
 //     if (param != tabSelectorHouse[i]) {
 //       $(tabSelectorHouse[i]).attr(
 //         "class",
-//         "jeu-grid__case jeu-grid__case--opacit"
+//         "grid__case grid__case--opacit"
 //       );
 //     } else {
 //       continue;
@@ -192,6 +233,9 @@ function toursEtCpt() {
   if (tourNum < 2) {
     jeuActif = false;
     nextActif = false;
+    osToNum = cptOs * 100;
+    scoreNum = scoreNum + osToNum;
+    displayCpt();
     gameOver();
   } else {
     jeuActif = false;
@@ -215,14 +259,14 @@ function toursEtCpt() {
         tabToutou = ["", "", ""];
 
         // $("#m1").empty();
-        // //  $("#m1").attr("class", "jeu-grid__case jeu-grid__case--hg");
+        // //  $("#m1").attr("class", "grid__case grid__case--hg");
         // $("#m2").empty();
-        // //$("#m2").attr("class", "jeu-grid__case  jeu-grid__case--hd");
+        // //$("#m2").attr("class", "grid__case  grid__case--hd");
         // $("#m3").empty();
-        // //$("#m3").attr("class", "jeu-grid__case jeu-grid__case--bg");
+        // //$("#m3").attr("class", "grid__case grid__case--bg");
         // $("#m4").empty();
-        // //$("#m4").attr("class", "jeu-grid__case jeu-grid__case--bd");
-        // //$("#z-jeuGrid").attr("class", "jeu-grid");
+        // //$("#m4").attr("class", "grid__case grid__case--bd");
+        // //$("#grid").attr("class", "grid");
 
         emptyDom();
         play();
@@ -235,13 +279,11 @@ function toursEtCpt() {
 // ! GAMEOVER.
 //*************************************************************/
 function gameOver() {
-  console.log("gameover ok");
-
-  //displayPage4();
-  // displayGameover();
   $("#gov").show();
-  // $("#gameoverNum").empty();
-  // $("#gameoverNum").append(scoreNum);
+  $("#clicNext").empty();
+  $("#gameoverNum").empty();
+  $("#gameoverNum").append(scoreNum);
+  setTimeout(displaypage4, 1500);
 }
 
 //*************************************************************
@@ -267,7 +309,12 @@ function displayHouses() {
       // * bien sûr on crée l'image pour le DOM
       const image = document.createElement("img");
       // * les feat de l'image : le path pour la src, la class
-      let maison = "/public/img/" + laMaisonImg + ".png";
+
+      // ! version mobile
+      //let maison = "/public/img/" + laMaisonImg + ".png";
+      let maison = "/rubypac/public/img/" + laMaisonImg + ".png";
+      // ! fin mobile
+
       image.src = maison;
       image.setAttribute("class", "featImg");
       // * on concatene et on affiche dans le DOM
@@ -292,29 +339,29 @@ function hideRuby() {
 
 // * AFFICHER LE FLASH PTS
 function flashOs() {
-  $("#z-jeuGrid").hide();
-  $("#z-score1").hide();
-  $("#z-score2").hide();
-  console.log("ha tiens");
+  //  $("#container-try").hide();
+  $("#container-try").hide();
+  $("#container-grid").hide();
+  $("#container-score").hide();
+
   $("#page3").show();
 
-  $("#z-flash").show();
-  $("#z-flash__img").append(bigOs);
-  $("#z-flash__pts").append("+", cptOs * 100, "  PTS !");
+  $("#container-flash").show();
+  $("#container-flash__img").append(bigOs);
+  $("#container-flash__pts").append("+", cptOs * 100, "  PTS !");
 
-  setTimeout(delay, 850);
+  setTimeout(delay, 1100);
 }
 
 function delay() {
-  $("#z-jeuGrid").show();
-  //$("#page3").show();
-  $("#z-score1").show();
-  $("#z-score2").show();
-  $("#z-flash").hide();
-  $("#z-flash__img").empty();
-  $("#z-flash__pts").empty();
-  //console.log("#z-flash__img : ", $("#z-flash__img"));
-  //console.log("#z-flash__pts : ", z-flash__pts);
+  $("#container-grid").show();
+  $("#container-score").show();
+  $("#container-try").show();
+  $("#clicNext").show();
+
+  $("#container-flash").hide();
+  $("#container-flash__img").empty();
+  $("#container-flash__pts").empty();
 }
 
 // * AFFICHER LES TOUTOUS AU HASARD
@@ -333,12 +380,17 @@ function displayToutou(param) {
       // * bien sûr on crée l'image pour le DOM
       const imageT = document.createElement("img");
       // * on concatene + les feat de l'image (path pour la src, la class)
-      let toutou = "/public/img/" + toutouImg + ".png";
+
+      // ! version mobile
+      //let toutou = "/public/img/" + toutouImg + ".png";
+      let toutou = "/rubypac/public/img/" + toutouImg + ".png";
+      // ! fin version mobile
+
       imageT.src = toutou;
       imageT.setAttribute("class", "featImg");
       // * puis on affiche dans le DOM
       $(param).append(imageT);
-      // $(thisHouse).attr("class", "jeu-grid__case--changed");
+      // $(thisHouse).attr("class", "grid__case--changed");
       //console.log("attention thisHouse est " + thisHouse);
     }
     // ! sinon si tabToutou est occupé on retire 1 à i qui ne progresse pas
@@ -355,14 +407,27 @@ function displayToutou(param) {
 
 function displayPage1() {
   $("#page1").show();
+  $("#pageHead").show();
+
   $("#page2").hide();
   $("#page3").hide();
   $("#page4").hide();
+
+  $("#p1ma").empty();
+  $("#p1mi").empty();
+  $("#p1cb").empty();
+  $("#p1ru").empty();
+
+  $("#p1ma").append(p1ma);
+  $("#p1mi").append(p1mi);
+  $("#p1cb").append(p1cb);
+  $("#p1ru").append(p1ru);
 }
 
 function displayPage2() {
   $("#page1").hide();
   $("#page2").show();
+  $("#pageHead").hide();
   $("#page3").hide();
   $("#page4").hide();
 }
@@ -374,11 +439,12 @@ function displayPage3() {
   $("#page4").hide();
 }
 
-function displayPage4() {
+function displaypage4() {
   $("#page1").hide();
   $("#page2").hide();
   $("#page3").hide();
   $("#page4").show();
+  $("#pageHead").show();
 }
 
 function displayCpt() {

@@ -1,3 +1,14 @@
+<!-- /*************************************************************
+* Note version OVH.*
+* - dans index : link rel du css dans meta *
+* - dans index : script src du js en fin de doc *
+* - dans typography.scss la font *
+* - dans .js : le path *
+* - dans .js : displayHouse *
+* - dans .js : displayToutou *
+*************************************************************/ -->
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,7 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,900i" rel="stylesheet"> -->
-    <link rel="stylesheet" href="/public/css/style.css" />
+    <!-- <link rel="stylesheet" href="/public/css/style.css" /> -->
+    <link rel="stylesheet" href="/rubypac/public/css/style.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Ruby's game</title>
 </head>
@@ -15,42 +27,47 @@
 * Ruby game.*
 * Description: Trouver l'os caché dans une maison et *
 * éviter les amis de Ruby que sont *
-* Max, Miky et Belch'a et Chichon. *
+* Max, Miky et Belcha et Chichon. *
 * Author: LeBonUnivers *
 * visit: https://lebonunivers.fr *
 *************************************************************/ -->
 
-
 <body>
+
+    <!-- /*************************************************************
+    * page Head.*
+    *************************************************************/ -->
+
+    <section id="pageHead">
+        <h1 class="titre">
+            <span class="titre__baseline">r</span><span class="titre__baseline--changed">u</span><span
+                class="titre__baseline">b</span><span class="titre__baseline">y</span>
+        </h1>
+    </section>
 
     <!-- /*************************************************************
     * page 1.*
     *************************************************************/ -->
 
     <section id="page1">
-        <h1 class="titre">
-            <span class="titre__baseline">r</span><span class="titre__baseline--changed">u</span><span
-                class="titre__baseline">b</span><span class="titre__baseline">y</span>
-
-        </h1>
-
 
         <!-- <img class="page1__imgR" src="/public/img/rubylogo.png" alt="logo de Ruby" /> -->
 
         <section class="dogs">
-            <div class="dogs__line">"max"<img src='/public/img/dog0.png' class='dogs__img'></div>
-            <div class="dogs__line">"miky"<img src='/public/img/dog1.png' class='dogs__img'></div>
-            <div class="dogs__line">"chichon belcha"<img src='/public/img/dog2.png' class='dogs__img'></div>
-            <div class="dogs__line">"ruby"<img src='/public/img/rubypac.png' class='dogs__img'></div>
+            <div class="dogs__line">"max"<span id="p1ma"></span></div>
+            <div class="dogs__line">"miky"<span id="p1mi"></span></div>
+            <div class="dogs__line">"chichon belcha"<span id="p1cb"></span></div>
+            <div class="dogs__line">"ruby"<span id="p1ru"></span></div>
             </div>
         </section>
+
         <section class="btn">
             <div id="play" class="btn__btn">play game</div>
-            <div class="btn__btn">high scores</div>
+            <div class="btn__btn" onclick="window.location.href = '/rubypac/resultpage.php';">high scores</div>
         </section>
 
 
-        <h3 class="foot">www.lebonunivers.fr/game</h3>
+        <h3 class="foot"><a href="www.lebonunivers.fr/game">www.lebonunivers.fr/game</a></h3>
 
     </section>
 
@@ -61,38 +78,35 @@
 
     <section id="page2">
 
-
-        <!-- todo SECTION grid  -->
-        <section class="gridCenter">
-            <section id="z-jeuGrid" class="jeu-grid">
-                <div id="m1" class="jeu-grid__case jeu-grid__case--hg"></div>
-                <div id="m2" class="jeu-grid__case jeu-grid__case--hd"></div>
-                <div id="m3" class="jeu-grid__case jeu-grid__case--bg"></div>
-                <div id="m4" class="jeu-grid__case jeu-grid__case--bd"></div>
-            </section>
+        <section id="container-try" class="containerTry">
+            <div class="containerTry__line">
+                <div id="tour" class="containerTry__try">Essai</div>
+                <div id="tourNum" class="containerTry__num"></div>
+                <div id="clicNext" class="containerTry__num next-flash">Clic NEXT !</div>
+            </div>
         </section>
 
+        <section id="container-grid" class="containerGrid">
+            <section id="grid" class="grid">
+                <div id="m1" class="grid__case grid__case--hg"></div>
+                <div id="m2" class="grid__case grid__case--hd"></div>
+                <div id="m3" class="grid__case grid__case--bg"></div>
+                <div id="m4" class="grid__case grid__case--bd"></div>
+            </section>
+            <div id="gov" class="gameoverFlash">GAME OVER</div>
+            <div id="next" class="next">NEXT</div>
+        </section>
 
-        <section id="z-score1" class="lineScore">
+        <section id="container-score" class="containerScore">
             <div>score</div>
-            <div id="scoreNum" class="lineScore__num"></div>
-            <!-- <div id="os" class="lineScore--margeL">os</div>
-            <div id="cptOs" class="lineScore__num"></div> -->
-
-            <div class="lineScore--margeL"></div>
+            <div id="scoreNum" class="containerScore__num"></div>
+            <div class="containerScore--margeL"></div>
             <div id="os1"></div>
             <div id="os2"></div>
             <div id="os3"></div>
             <div id="os4"></div>
         </section>
 
-        <section id="z-score2" class="lineScore2">
-            <div class="lineScore2__line">
-                <div id="tour" class="lineScore2__try">Essai</div>
-                <div id="tourNum" class="lineScore__num lineScore__num--blue"></div>
-                <div id="next" class="lineScore2__dline">NEXT</div>
-            </div>
-        </section>
     </section>
 
     <!-- /*************************************************************
@@ -100,9 +114,11 @@
         *************************************************************/ -->
 
     <section id="page3">
-        <section id="z-flash" class="flash">
-            <div id="z-flash__pts" class="flash__pts"></div>
-            <div id="z-flash__img" class="flash__img"></div>
+        <section id="container-flash" class="containerFlash">
+            <section class="bubble">
+                <div id="container-flash__pts" class="containerFlash__pts"></div>
+                <div id="container-flash__img" class="containerFlash__img"></div>
+            </section>
         </section>
     </section>
 
@@ -111,33 +127,26 @@
         * page 4.*
         *************************************************************/ -->
 
-    <div id="gov" class="gameover__title">GAME OVER</div>
-
-    <!-- /*************************************************************
-        * page 5.*
-        *************************************************************/ -->
-
-    <section id="page3">
-
-        <h1 class="titre">
-            <span class="titre__baseline">r</span><span class="titre__baseline--changed">u</span><span
-                class="titre__baseline">b</span><span class="titre__baseline">y</span>
-        </h1>
+    <section id="page4">
 
         <section class="gameover">
-            <div id="govk" class="gameover__title">GAME OVER</div>
             <div class="gameover__txt">Your score</div>
             <div id="gameoverNum" class="gameover__num"></div>
             <div class="gameover__txt--y">Enter your name</div>
             <div class="gameover__txt--y">Highscorer!</div>
-            <input type="text" class="gameover__input" placeholder="enter your name">
-            <button class="gameover__input">OK</button>
+            <input id="who" type="text" class="gameover__input" placeholder="enter your name">
+            <span id="okbtn" class="gameover__btn">OK</span>
             <div id="goback" class="gameover__btn">Go back</div>
         </section>
 
     </section>
 
+    <!-- /*************************************************************
+        * FIN DES PAGES.*
+        *************************************************************/ -->
 </body>
-<script src="/public/js/rubyscript.js" charset="utf-8"></script>
+
+<!-- <script src="/public/js/rubyscript.js" charset="utf-8"></script> -->
+<script src="/rubypac/public/js/rubyscript.js" charset="utf-8"></script>
 
 </html>

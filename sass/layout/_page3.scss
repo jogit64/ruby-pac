@@ -2,34 +2,79 @@
  * CSS de page 3.*
  *************************************************************/
 
-// * SECTION z-flash
-.flash {
-  //margin-top: 15rem;
-  width: 100%;
-
+// * SECTION container-flash
+.containerFlash {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  //align-content: center;
-  //background-color: aqua;
+  margin-top: 30rem;
+
+  font-family: Merry;
+  font-size: 6rem;
+  color: yellow;
+  //padding: 1rem;
 
   // ! appellé en .js
   &__pts {
-    font-family: Merry;
-    font-size: 6rem;
-    color: yellow;
-    margin-top: 8rem;
+    text-align: center;
+    margin: auto;
   }
 
   &__img {
-    //max-height: 20rem;
-    max-width: 25rem;
-    margin-top: 2rem;
+    width: 40rem;
+    text-align: center;
+    // margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
-    // background-color: aqua;
-    // transform: rotate(45deg);
-    //margin: auto;
-    //display: flex;
+.bubble {
+  display: block;
+  text-align: center;
+  position: absolute;
+  margin-top: 10rem;
+  padding-top: 2.5rem;
+
+  width: 50%;
+  height: 65%;
+  //padding: 8rem;
+
+  // border: 2px solid yellow;
+  // background-color: red;
+  // border-radius: 75%;
+}
+
+@media (max-width: 650px) {
+  .containerFlash {
+    // //margin-top: 15rem;
+    // width: 100%;
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+
+    // //align-content: center;
+    // //background-color: aqua;
+
+    // ! appellé en .js
+    &__pts {
+      //    font-family: Merry;
+      font-size: 2rem;
+      //color: yellow;
+      margin-top: 5rem;
+    }
+
+    &__img {
+      //max-height: 20rem;
+      max-width: 12rem;
+      margin-top: 0rem;
+
+      // background-color: aqua;
+      // transform: rotate(45deg);
+      //margin: auto;
+      //display: flex;
+    }
   }
 }

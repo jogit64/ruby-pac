@@ -2,54 +2,85 @@
  * CSS de page 1.*
  *************************************************************/
 
-#page1 {
-  z-index: 0;
+.container {
+  //  color: $colour-accent;
+  border: 1px solid #fff;
+  padding: 5rem;
+
+  background-color: blue;
+
+  height: 350px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.titre {
-  @include flex-place($center);
-  //background: $colour-primary;
-  //margin-bottom: 5rem;
-  //font-family: Pacfont-ZEBZ;
-  //font-family: Blomberg;
-  font-family: Merry;
-  font-size: 10rem;
-  margin-top: 5rem;
+.div {
+  width: 100px;
+  z-index: 2;
+  position: absolute;
 
-  &__baseline {
-    color: $colour-secondary;
-    text-align: center;
-    padding-right: 1.1rem;
-  }
-
-  &__baseline--changed {
-    display: inline-block;
-    color: yellow;
-    padding-right: 1.1rem;
-    transform: rotate(-20deg);
-  }
+  background-color: grey;
+  text-align: center;
 }
+
+.center {
+  text-align: center;
+  z-index: 1;
+  width: 150px;
+  background-color: aquamarine;
+  position: absolute;
+}
+// ! fin test __________________________________________________
 
 .dogs {
   margin-top: 10rem;
   margin-bottom: 10rem;
+
   display: flex;
   justify-content: space-around;
+
   font-family: Merry;
   font-size: 2.5rem;
+
   color: $colour-secondary;
 
   &__line {
     display: inline-flex;
-
-    box-sizing: border-box;
-    margin: auto;
     align-items: center;
   }
 
   &__img {
-    max-width: 110px;
+    max-width: 130px;
     padding-left: 2.2rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .dogs {
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+    // display: flex;
+    display: block;
+
+    //justify-content: space-around;
+    // font-family: Merry;
+    font-size: 1.5rem;
+    //color: $colour-secondary;
+
+    &__line {
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+      margin: auto;
+      align-items: center;
+    }
+
+    &__img {
+      max-width: 50px;
+      padding-left: 2.2rem;
+    }
   }
 }
 
@@ -64,10 +95,31 @@
     margin: auto;
     padding: 1.2rem;
   }
+
   &__btn:hover {
     color: $colour-secondary;
     font-size: 3.9rem;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 650px) {
+  .btn {
+    // font-family: Merry;
+    // display: flex;
+    // flex-direction: column;
+    // color: $colour-accent;
+    font-size: 2rem;
+
+    &__btn {
+      //margin: auto;
+      padding: 0.8rem;
+    }
+    &__btn:hover {
+      //color: $colour-secondary;
+      font-size: 2.5rem;
+      //cursor: pointer;
+    }
   }
 }
 
@@ -77,4 +129,11 @@
   font-size: 1.6rem;
   text-align: center;
   margin-top: 5rem;
+}
+
+@media (max-width: 650px) {
+  .foot {
+    font-size: 0.8rem;
+    margin-top: 6rem;
+  }
 }

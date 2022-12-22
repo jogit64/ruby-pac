@@ -1,0 +1,31 @@
+/*************************************************************
+ * CSS de page Head.*
+ *************************************************************/
+
+.titre {
+  @include flex-place($center);
+
+  font-family: Merry;
+  font-size: 10rem;
+  margin-top: 5rem;
+
+  &__baseline {
+    color: $colour-secondary;
+    text-align: center;
+    padding-right: 1.1rem;
+  }
+
+  &__baseline--changed {
+    display: inline-block;
+    color: yellow;
+    padding-right: 1.1rem;
+    transform: rotate(-20deg);
+  }
+}
+
+@media (max-width: 650px) {
+  .titre {
+    font-size: 4rem;
+    margin-top: 5rem;
+  }
+}

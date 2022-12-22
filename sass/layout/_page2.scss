@@ -3,24 +3,25 @@
  *************************************************************/
 
 //*************************************************************
-// ! CONTENEUR DE jeu-grid.
+// ! CONTENEUR DE grid.
 //*************************************************************/
-.gridCenter {
+.containerGrid {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 4rem;
   margin-bottom: 4rem;
-  //background-color: aqua;
 }
 
 //*************************************************************
-// ! jeu-grid (+ ID z-jeuGrid).
+// ! grid.
 //*************************************************************/
-.jeu-grid {
+.grid {
+  z-index: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 5rem;
-  max-width: 45rem;
+  max-width: 40rem;
   // background-color: red;
 
   &__case {
@@ -39,6 +40,7 @@
       border-left: 5px double black;
       border-top: 5px double black;
     }
+
     &--hd {
       border-left: 5px double blue;
       border-bottom: 5px double blue;
@@ -67,7 +69,7 @@
 //*************************************************************
 // ! LIGNE score et os txt et num (+ ID z-score).
 //*************************************************************/
-.lineScore {
+.containerScore {
   display: flex;
   justify-content: center;
   margin: auto;
@@ -95,31 +97,103 @@
   }
 }
 
-.lineScore2 {
+@media (max-width: 650px) {
+  .containerScore {
+    font-size: 2rem;
+
+    &--margeL {
+      margin-left: 1rem;
+    }
+
+    &__num {
+      font-size: 2rem;
+      margin-right: 0rem;
+      margin-left: 1rem;
+    }
+  }
+}
+
+.containerTry {
+  z-index: 1;
   text-align: center;
+  margin-top: 5rem;
 
   &__line {
     display: inline-flex;
     margin: auto;
     font-family: Merry;
     font-size: 3rem;
-    // background-color: aqua;
     color: $colour-secondary;
   }
 
-  &__try {
+  &__num {
+    font-size: 3rem;
     color: blue;
+    margin-right: 0rem;
+    margin-left: 2rem;
   }
+}
 
-  &__dline {
-    //background-color: red;
-    // border-radius: 50%;
-    // border: 5px solid yellow;
-    // margin-top: 1rem;
-    color: blue;
-    //margin: auto;
-    //padding: 1.2rem;
-    cursor: pointer;
+@media (max-width: 650px) {
+  .containerTry {
+    &__line {
+      font-size: 2rem;
+    }
+  }
+}
+
+.next-flash {
+  animation-duration: 1.2s;
+  animation-name: clignoter;
+  animation-iteration-count: infinite;
+  transition: none;
+}
+
+@keyframes clignoter {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.next {
+  z-index: 2;
+  font-family: Merry;
+  font-size: 3rem;
+
+  background-color: red;
+  border-radius: 50%;
+  border: 5px solid yellow;
+  padding: 1.2rem;
+
+  color: blue;
+
+  position: absolute;
+
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .next {
+    font-size: 2rem;
+
+    background-color: red;
+    border-radius: 50%;
+    border: 5px solid yellow;
+    padding: 1.2rem;
+    //margin-top: 1rem;
+    //color: blue;
+
+    // position: relative;
+    // margin-top: 50%;
+    // margin-left: 50%;
+
+    // cursor: pointer;
   }
 }
 
@@ -127,6 +201,25 @@
   &__img {
     max-width: 2rem;
   }
+}
+
+@media (max-width: 650px) {
+  .featOs {
+    &__img {
+      max-width: 1rem;
+    }
+  }
+}
+
+.gameoverFlash {
+  // text-align: center;
+
+  font-family: Merry;
+  font-size: 4rem;
+  color: red;
+  // text-align: center;
+  position: absolute;
+  z-index: 2;
 }
 
 // ! CLASSES APPELEES EN .JS -------------------------------------------------- //

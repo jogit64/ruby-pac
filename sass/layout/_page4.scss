@@ -6,12 +6,13 @@
 .gameover {
   display: block;
   text-align: center;
-  &__title {
-    font-family: Merry;
-    font-size: 4rem;
-    color: red;
-    text-align: center;
-  }
+
+  // &__title {
+  //   font-family: Merry;
+  //   font-size: 4rem;
+  //   color: red;
+  //   text-align: center;
+  // }
 
   &__txt {
     margin-top: 2rem;
@@ -67,5 +68,36 @@
     text-align: center;
     font-style: italic;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 650px) {
+  .gameover {
+    &__txt {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+    }
+
+    &__txt--y {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      letter-spacing: 0.2rem;
+    }
+
+    &__num {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    &__input {
+      margin-bottom: 3rem;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      padding: 1.2rem;
+    }
+
+    &__btn {
+      font-size: 1.5rem;
+    }
   }
 }
