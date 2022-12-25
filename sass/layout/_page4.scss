@@ -7,13 +7,6 @@
   display: block;
   text-align: center;
 
-  // &__title {
-  //   font-family: Merry;
-  //   font-size: 4rem;
-  //   color: red;
-  //   text-align: center;
-  // }
-
   &__txt {
     margin-top: 2rem;
     font-family: Merry;
@@ -62,9 +55,7 @@
     margin-top: 1.2rem;
     font-family: Merry;
     font-size: 2.5rem;
-
     color: $colour-accent;
-    //    margin-top: 1rem;
     text-align: center;
     font-style: italic;
     cursor: pointer;

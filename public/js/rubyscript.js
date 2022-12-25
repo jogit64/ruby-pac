@@ -13,6 +13,7 @@
 
 //let path = "";
 let path = "/rubypac";
+
 // * les tablbeaux
 let tabHouse = ["", "", "", ""];
 let tabToutou = ["", "", ""];
@@ -193,7 +194,7 @@ $(".grid__case").click(function () {
       // !! 2 sinon si pas Ruby on vide la maison et on affiche l'un des autres toutous
       else {
         tabToutou[this.id] = "toutou";
-        //console.log("else tabToutou :", tabToutou);
+
         // * on décrémente les os
         cptOs--;
         stockOs(cptOs);
@@ -229,6 +230,7 @@ $(".grid__case").click(function () {
 //*************************************************************/
 
 // ! si compteur fin GAMEOVER sinon NEXT
+
 function toursEtCpt() {
   if (tourNum < 2) {
     jeuActif = false;
@@ -283,7 +285,7 @@ function gameOver() {
   $("#clicNext").empty();
   $("#gameoverNum").empty();
   $("#gameoverNum").append(scoreNum);
-  setTimeout(displaypage4, 1500);
+  setTimeout(displaypage4, 2500);
 }
 
 //*************************************************************
@@ -457,13 +459,3 @@ function displayCpt() {
   $("#tourNum").empty();
   $("#tourNum").append(tourNum);
 }
-
-//*************************************************************
-// TODO BROUILLON.
-//*************************************************************/
-// function displayOs() {
-//   $("#os1").append(os);
-//   $("#os2").append(os);
-//   $("#os3").append(os);
-//   $("#os4").append(os);
-// }

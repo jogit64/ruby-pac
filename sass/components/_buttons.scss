@@ -1,21 +1,54 @@
-.commencer {
-  text-align: center;
-  font-variant-caps: small-caps;
+// .commencer {
+//   text-align: center;
+//   font-variant-caps: small-caps;
 
-  width: 200px;
+//   width: 200px;
 
-  background-color: $colour-primary;
+//   background-color: $colour-primary;
+//   color: $colour-accent;
+
+//   border: 1px solid $colour-primary;
+//   border-radius: 20%;
+
+//   margin: auto;
+//   margin-top: 2rem;
+//   padding: 1rem;
+
+//   &:hover {
+//     color: red;
+//     cursor: pointer;
+//   }
+// }
+
+// * bnt page1 PLAY GAME et HISHG SCORE
+.btn {
+  display: flex;
+  flex-direction: column;
   color: $colour-accent;
+  font-family: Merry;
+  font-size: 3.3rem;
 
-  border: 1px solid $colour-primary;
-  border-radius: 20%;
+  &__btn {
+    margin: auto;
+    padding: 1.2rem;
+  }
 
-  margin: auto;
-  margin-top: 2rem;
-  padding: 1rem;
-
-  &:hover {
-    color: red;
+  &__btn:hover {
+    color: $colour-secondary;
+    font-size: 3.9rem;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 650px) {
+  .btn {
+    font-size: 2rem;
+
+    &__btn {
+      padding: 0.8rem;
+    }
+    &__btn:hover {
+      font-size: 2.5rem;
+    }
   }
 }

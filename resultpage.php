@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,900i" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="/public/css/style.css" /> -->
     <link rel="stylesheet" href="/rubypac/public/css/style.css" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -40,21 +38,21 @@
 
     <section>
         <?php
-		// * ouverture de la BDD
-		try {
-			//$bdd = new PDO('mysql:host=localhost;dbname=ruby;charset=utf8', 'root', '');
-			$bdd = new PDO('mysql:host=lebonubjo.mysql.db;dbname=lebonubjo;charset=utf8', 'lebonubjo', 'Baltimore69');
-		} catch (Exception $e) {
-			die('Erreur : ' . $e->getMessage());
-		}
+        // * ouverture de la BDD
+        try {
+            //$bdd = new PDO('mysql:host=localhost;dbname=ruby;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=lebonubjo.mysql.db;dbname=lebonubjo;charset=utf8', 'lebonubjo', 'Baltimore69');
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
 
-		// * si ok on récupère tout le contenu de la table highscores
+        // * si ok on récupère tout le contenu de la table highscores
 
-		//	$reponse = $bdd->query('SELECT who, score  FROM highscores ORDER BY score DESC LIMIT 10');
-		$reponse = $bdd->query('SELECT who, score  FROM ruby ORDER BY score DESC LIMIT 10');
+        //	$reponse = $bdd->query('SELECT who, score  FROM highscores ORDER BY score DESC LIMIT 10');
+        $reponse = $bdd->query('SELECT who, score  FROM ruby ORDER BY score DESC LIMIT 10');
 
-		// * on affiche chaque entrée une à une	
-		?>
+        // * on affiche chaque entrée une à une	
+        ?>
 
         <div>
             <!-- tableau des &à meilleurs scores -->
@@ -70,9 +68,9 @@
                 <!-- lignes BDD du tableau -->
 
                 <?php
-				$i = 1;
-				while ($donnees = $reponse->fetch()) {
-				?>
+                $i = 1;
+                while ($donnees = $reponse->fetch()) {
+                ?>
 
                 <tr>
                     <td class="tableScore--yel tableScore--margeR "><?php echo $i; ?>.</td>
@@ -82,11 +80,11 @@
                 </tr>
 
                 <?php
-					$i++;
-				}
+                    $i++;
+                }
 
-				$reponse->closeCursor(); // Termine le traitement de la requête
-				?>
+                $reponse->closeCursor(); // Termine le traitement de la requête
+                ?>
 
             </table>
 

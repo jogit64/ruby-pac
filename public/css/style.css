@@ -19,10 +19,6 @@ body {
   background: rgb(0, 0, 0);
 }
 
-.contain {
-  height: 100%;
-}
-
 @font-face {
   font-family: "SweetSansProExLight";
   src: url("/rubypac/public/fonts/SweetSansProExLight.woff");
@@ -48,23 +44,6 @@ h1 {
 textarea {
   font-weight: 100;
   font-size: 2rem;
-}
-
-.commencer {
-  text-align: center;
-  font-variant-caps: small-caps;
-  width: 200px;
-  background-color: rgb(0, 0, 0);
-  color: rgba(252, 252, 252, 0.8784313725);
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 20%;
-  margin: auto;
-  margin-top: 2rem;
-  padding: 1rem;
-}
-.commencer:hover {
-  color: red;
-  cursor: pointer;
 }
 
 /*************************************************************
@@ -98,32 +77,6 @@ textarea {
 /*************************************************************
  * CSS de page 1.*
  *************************************************************/
-.container {
-  border: 1px solid #fff;
-  padding: 5rem;
-  background-color: blue;
-  height: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.div {
-  width: 100px;
-  z-index: 2;
-  position: absolute;
-  background-color: grey;
-  text-align: center;
-}
-
-.center {
-  text-align: center;
-  z-index: 1;
-  width: 150px;
-  background-color: aquamarine;
-  position: absolute;
-}
-
 .dogs {
   margin-top: 10rem;
   margin-bottom: 10rem;
@@ -161,40 +114,18 @@ textarea {
     padding-left: 2.2rem;
   }
 }
-.btn {
-  font-family: Merry;
-  display: flex;
-  flex-direction: column;
-  color: rgba(252, 252, 252, 0.8784313725);
-  font-size: 3.3rem;
-}
-.btn__btn {
-  margin: auto;
-  padding: 1.2rem;
-}
-.btn__btn:hover {
-  color: #ffffff;
-  font-size: 3.9rem;
-  cursor: pointer;
-}
-
-@media (max-width: 650px) {
-  .btn {
-    font-size: 2rem;
-  }
-  .btn__btn {
-    padding: 0.8rem;
-  }
-  .btn__btn:hover {
-    font-size: 2.5rem;
-  }
-}
 .foot {
   color: rgba(252, 252, 252, 0.8784313725);
   font-family: SweetSansProExLight;
   font-size: 1.6rem;
   text-align: center;
   margin-top: 5rem;
+  text-decoration: none;
+}
+
+a:link {
+  color: rgba(252, 252, 252, 0.8784313725);
+  text-decoration: none;
 }
 
 @media (max-width: 650px) {
@@ -498,23 +429,6 @@ textarea {
     font-size: 1.5rem;
   }
 }
-footer {
-  background: rgb(0, 0, 0);
-  color: rgba(252, 252, 252, 0.8784313725);
-  font-family: SweetSansProExLight;
-  font-size: 1.3rem;
-  margin-top: 9rem;
-  min-height: 6rem;
-  display: flex;
-  justify-content: center;
-}
-
-.container {
-  margin: 1rem;
-  padding: 0.25rem 0.25rem 0 0.25rem;
-  border: 0.1rem solid rgba(252, 252, 252, 0.8784313725);
-}
-
 /*************************************************************
  * CSS de page result.php. *
  *************************************************************/

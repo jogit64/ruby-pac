@@ -1,36 +1,13 @@
-// @font-face {
-//   font-family: "SweetSansProRegular";
-//   src: url("/public/fonts/SweetSansProRegular.woff");
-// }
-
 @font-face {
   font-family: "SweetSansProExLight";
+  //src: url("/rubypac/public/fonts/SweetSansProExLight.woff");
   src: url("/rubypac/public/fonts/SweetSansProExLight.woff");
 }
-// @font-face {
-//   font-family: "Pacfont";
-//   src: url("/public/fonts/PAC-FONT.TTF");
-// }
-// @font-face {
-//   font-family: "CrackMan";
-//   src: url("/public/fonts/CrackMan.TTF");
-// }
-// @font-face {
-//   font-family: "PacfontGood-yYye";
-//   src: url("/public/fonts/PacfontGood-yYye.ttf");
-// }
-// @font-face {
-//   font-family: "Pacfont-ZEBZ";
-//   src: url("/public/fonts/Pacfont-ZEBZ.ttf");
-// }
-// @font-face {
-//   font-family: "Blomberg";
-//   src: url("/public/fonts/Blomberg-8MKKZ.otf");
-// }
 
 @font-face {
   font-family: "Merry";
   //src: url("/public/fonts/MerryChristmas2021-owOL4.ttf");
+  //src: url("/rubypac/public/fonts/MerryChristmas2021-owOL4.ttf");
   src: url("/rubypac/public/fonts/MerryChristmas2021-owOL4.ttf");
 }
 
@@ -43,21 +20,12 @@ body {
 }
 
 h1 {
-  //   font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-size: 5rem;
   font-style: italic;
 }
 
 textarea {
-  //   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 2rem;
 }
-
-// button {
-//   //   font-family: "Roboto", sans-serif;
-//   font-weight: 900;
-//   font-style: italic;
-//   font-size: 2.75rem;
-// }

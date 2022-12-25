@@ -2,38 +2,6 @@
  * CSS de page 1.*
  *************************************************************/
 
-.container {
-  //  color: $colour-accent;
-  border: 1px solid #fff;
-  padding: 5rem;
-
-  background-color: blue;
-
-  height: 350px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.div {
-  width: 100px;
-  z-index: 2;
-  position: absolute;
-
-  background-color: grey;
-  text-align: center;
-}
-
-.center {
-  text-align: center;
-  z-index: 1;
-  width: 150px;
-  background-color: aquamarine;
-  position: absolute;
-}
-// ! fin test __________________________________________________
-
 .dogs {
   margin-top: 10rem;
   margin-bottom: 10rem;
@@ -84,51 +52,18 @@
   }
 }
 
-.btn {
-  font-family: Merry;
-  display: flex;
-  flex-direction: column;
-  color: $colour-accent;
-  font-size: 3.3rem;
-
-  &__btn {
-    margin: auto;
-    padding: 1.2rem;
-  }
-
-  &__btn:hover {
-    color: $colour-secondary;
-    font-size: 3.9rem;
-    cursor: pointer;
-  }
-}
-
-@media (max-width: 650px) {
-  .btn {
-    // font-family: Merry;
-    // display: flex;
-    // flex-direction: column;
-    // color: $colour-accent;
-    font-size: 2rem;
-
-    &__btn {
-      //margin: auto;
-      padding: 0.8rem;
-    }
-    &__btn:hover {
-      //color: $colour-secondary;
-      font-size: 2.5rem;
-      //cursor: pointer;
-    }
-  }
-}
-
 .foot {
   color: $colour-accent;
   font-family: SweetSansProExLight;
   font-size: 1.6rem;
   text-align: center;
   margin-top: 5rem;
+  text-decoration: none;
+}
+
+a:link {
+  color: $colour-accent;
+  text-decoration: none;
 }
 
 @media (max-width: 650px) {
