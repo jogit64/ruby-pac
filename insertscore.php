@@ -17,7 +17,7 @@ $bdd->exec('INSERT INTO ruby(who,score) VALUES("' . $who . '", "' . $score . '")
 
 <?php
 
-header('Location: /rubypac/resultpage.php');
+header('Location: /resultpage.php');
 
 exit();
 ?>

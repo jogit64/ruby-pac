@@ -29,6 +29,40 @@
   }
 }
 
+@media (max-width: 650px) {
+  .containerFlash {
+    // //margin-top: 15rem;
+    // width: 100%;
+    margin-top: 15rem;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+
+    // //align-content: center;
+    // //background-color: aqua;
+
+    // ! appellé en .js
+    &__pts {
+      //    font-family: Merry;
+      font-size: 2.7rem;
+      //color: yellow;
+      //margin-top: 3rem;
+    }
+
+    &__img {
+      //max-height: 20rem;
+      width: 15rem;
+      //margin-top: 0rem;
+
+      // background-color: aqua;
+      // transform: rotate(45deg);
+      //margin: auto;
+      //display: flex;
+    }
+  }
+}
+
 .bubble {
   display: block;
   text-align: center;
@@ -46,35 +80,19 @@
 }
 
 @media (max-width: 650px) {
-  .containerFlash {
-    // //margin-top: 15rem;
-    // width: 100%;
+  .bubble {
+    display: block;
+    text-align: center;
+    position: absolute;
+    margin-top: 10rem;
+    padding-top: 2.5rem;
 
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
+    width: 50%;
+    height: 65%;
+    //padding: 8rem;
 
-    // //align-content: center;
-    // //background-color: aqua;
-
-    // ! appellé en .js
-    &__pts {
-      //    font-family: Merry;
-      font-size: 2rem;
-      //color: yellow;
-      margin-top: 5rem;
-    }
-
-    &__img {
-      //max-height: 20rem;
-      max-width: 12rem;
-      margin-top: 0rem;
-
-      // background-color: aqua;
-      // transform: rotate(45deg);
-      //margin: auto;
-      //display: flex;
-    }
+    // border: 2px solid yellow;
+    // background-color: red;
+    // border-radius: 75%;
   }
 }

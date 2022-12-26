@@ -11,8 +11,8 @@
 // ! DECLARATION VARIABLES.
 //*************************************************************/
 
-//let path = "";
-let path = "/rubypac";
+let path = "";
+//let path = "/rubygame";
 
 // * les tablbeaux
 let tabHouse = ["", "", "", ""];
@@ -153,8 +153,7 @@ function insertScore() {
   if (!who || who.length < 2 || who.length > 8) {
     alert("entrez un nom entre 2 et 8 caractères");
   } else {
-    top.document.location =
-      "/rubypac/insertscore.php?w=" + who + "&s=" + scoreNum;
+    top.document.location = "/insertscore.php?w=" + who + "&s=" + scoreNum;
   }
 }
 
@@ -314,7 +313,7 @@ function displayHouses() {
 
       // ! version mobile
       //let maison = "/public/img/" + laMaisonImg + ".png";
-      let maison = "/rubypac/public/img/" + laMaisonImg + ".png";
+      let maison = "/public/img/" + laMaisonImg + ".png";
       // ! fin mobile
 
       image.src = maison;
@@ -345,6 +344,7 @@ function flashOs() {
   $("#container-try").hide();
   $("#container-grid").hide();
   $("#container-score").hide();
+  $("#goback").hide();
 
   $("#page3").show();
 
@@ -385,7 +385,7 @@ function displayToutou(param) {
 
       // ! version mobile
       //let toutou = "/public/img/" + toutouImg + ".png";
-      let toutou = "/rubypac/public/img/" + toutouImg + ".png";
+      let toutou = "/public/img/" + toutouImg + ".png";
       // ! fin version mobile
 
       imageT.src = toutou;
@@ -424,6 +424,8 @@ function displayPage1() {
   $("#p1mi").append(p1mi);
   $("#p1cb").append(p1cb);
   $("#p1ru").append(p1ru);
+
+  $("#goback").hide();
 }
 
 function displayPage2() {
@@ -432,6 +434,8 @@ function displayPage2() {
   $("#pageHead").hide();
   $("#page3").hide();
   $("#page4").hide();
+
+  $("#goback").show();
 }
 
 function displayPage3() {

@@ -10,8 +10,8 @@
 
 .tableScore {
   margin: auto;
-  margin-top: 5rem;
-  margin-bottom: 10rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   font-family: Merry;
   font-size: 2.5rem;
   color: $colour-accent;
@@ -25,12 +25,16 @@
   }
 }
 
+.padbot {
+  padding-bottom: 3rem;
+}
+
 @media (max-width: 650px) {
   .tableScore {
     margin: auto;
 
-    margin-top: 5rem;
-    margin-bottom: 10rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     font-size: 1.5rem;
 
     &--yel {

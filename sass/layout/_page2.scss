@@ -3,6 +3,40 @@
  *************************************************************/
 
 //*************************************************************
+// ! CONTENEUR DE essai x.
+//*************************************************************/
+
+.containerTry {
+  z-index: 1;
+  text-align: center;
+  margin-top: 5rem;
+
+  &__line {
+    display: inline-flex;
+    margin: auto;
+    font-family: Merry;
+    font-size: 3rem;
+    color: $colour-secondary;
+  }
+
+  &__num {
+    font-size: 3rem;
+    color: blue;
+    margin-right: 0rem;
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .containerTry {
+    margin-top: 2rem;
+    &__line {
+      font-size: 2rem;
+    }
+  }
+}
+
+//*************************************************************
 // ! CONTENEUR DE grid.
 //*************************************************************/
 .containerGrid {
@@ -28,7 +62,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    row-gap: 50px;
+    //row-gap: 10px;
 
     margin-left: 2.5rem;
     margin-right: 2.5rem;
@@ -63,6 +97,12 @@
     &--opacit {
       opacity: 0.4;
     }
+  }
+}
+
+@media (max-width: 650px) {
+  .grid {
+    max-width: 35rem;
   }
 }
 
@@ -109,35 +149,6 @@
       font-size: 2rem;
       margin-right: 0rem;
       margin-left: 1rem;
-    }
-  }
-}
-
-.containerTry {
-  z-index: 1;
-  text-align: center;
-  margin-top: 5rem;
-
-  &__line {
-    display: inline-flex;
-    margin: auto;
-    font-family: Merry;
-    font-size: 3rem;
-    color: $colour-secondary;
-  }
-
-  &__num {
-    font-size: 3rem;
-    color: blue;
-    margin-right: 0rem;
-    margin-left: 2rem;
-  }
-}
-
-@media (max-width: 650px) {
-  .containerTry {
-    &__line {
-      font-size: 2rem;
     }
   }
 }

@@ -3,8 +3,8 @@
  *************************************************************/
 
 .dogs {
-  margin-top: 10rem;
-  margin-bottom: 10rem;
+  margin-top: 7rem;
+  margin-bottom: 6rem;
 
   display: flex;
   justify-content: space-around;
@@ -27,8 +27,8 @@
 
 @media (max-width: 650px) {
   .dogs {
-    margin-top: 6rem;
-    margin-bottom: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 3.5rem;
     // display: flex;
     display: block;
 
@@ -46,7 +46,7 @@
     }
 
     &__img {
-      max-width: 50px;
+      max-width: 60px;
       padding-left: 2.2rem;
     }
   }
@@ -57,7 +57,7 @@
   font-family: SweetSansProExLight;
   font-size: 1.6rem;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 4rem;
   text-decoration: none;
 }
 
@@ -69,6 +69,6 @@ a:link {
 @media (max-width: 650px) {
   .foot {
     font-size: 0.8rem;
-    margin-top: 6rem;
+    margin-top: 3rem;
   }
 }

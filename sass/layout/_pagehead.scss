@@ -7,7 +7,7 @@
 
   font-family: Merry;
   font-size: 10rem;
-  margin-top: 5rem;
+  //margin-top: 2rem;
 
   &__baseline {
     color: $colour-secondary;
@@ -26,6 +26,6 @@
 @media (max-width: 650px) {
   .titre {
     font-size: 4rem;
-    margin-top: 5rem;
+    margin-top: 2.5rem;
   }
 }

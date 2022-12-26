@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <link rel="stylesheet" href="/rubypac/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/style.css" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -59,10 +59,11 @@
             <table class="tableScore">
                 <!-- en-tête du tableau -->
                 <tr>
-                    <td class="tableScore"></td>
-                    <td class="tableScore--yel">Name</td>
+                    <td>
+                    </td>
+                    <td class=" tableScore--yel padbot">Name</td>
                     <td></td>
-                    <td class="tableScore--yel">Score</td>
+                    <td class="tableScore--yel padbot">Score</td>
                 </tr>
 
                 <!-- lignes BDD du tableau -->
@@ -89,7 +90,7 @@
             </table>
 
             <section class="btn">
-                <div class="gameover__btn" onclick="window.location.href = '/rubypac/index.html';">go back</div>
+                <div class="gameover__btn" onclick="window.location.href = '/index.html';">go back</div>
             </section>
 
 
