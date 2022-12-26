@@ -451,6 +451,7 @@ function displaypage4() {
   $("#page3").hide();
   $("#page4").show();
   $("#pageHead").show();
+  $("#goback").show();
 }
 
 function displayCpt() {
